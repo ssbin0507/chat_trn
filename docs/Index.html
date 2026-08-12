@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORBIS EXPRESS - The Sovereign of Rails</title>
-    <!-- Google Fonts Import -->
+    <title>ORBIS EXPRESS - 특약지정 세계순환열차 오르비스호</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Noto+Serif+KR:wght@300;400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-dark: #0a0c10;
-            --bg-card: #121620;
+            --bg-dark: #080a0f;
+            --bg-card: #10141e;
+            --bg-card-hover: #171d2b;
             --gold-primary: #d4af37;
             --gold-light: #f3e5ab;
             --gold-dark: #aa7c11;
             --text-light: #e8e6e3;
             --text-muted: #9a9b9e;
-            --burgundy: #58111a;
-            --navy-deep: #0b1326;
+            --chaos-purple: #3a1c4a;
+            --burgundy: #4a121a;
             --font-cinzel: 'Cinzel', serif;
             --font-serif: 'Noto Serif KR', serif;
             --font-sans: 'Montserrat', sans-serif;
@@ -36,12 +37,12 @@
             background-color: var(--bg-dark);
             color: var(--text-light);
             font-family: var(--font-serif);
-            line-height: 1.8;
+            line-height: 1.85;
             overflow-x: hidden;
         }
 
         /* ----------------------------------
-           Ticket Overlay & Animation
+           00. Ticket Overlay & Interactive Punch
         ---------------------------------- */
         #ticket-screen {
             position: fixed;
@@ -49,7 +50,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: radial-gradient(circle at center, #1a202c 0%, #0a0c10 100%);
+            background: radial-gradient(circle at center, #151a26 0%, #050608 100%);
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -61,8 +62,8 @@
         .ticket-intro-text {
             color: var(--gold-light);
             font-family: var(--font-cinzel);
-            letter-spacing: 4px;
-            font-size: 0.9rem;
+            letter-spacing: 5px;
+            font-size: 0.85rem;
             margin-bottom: 2rem;
             text-transform: uppercase;
             animation: fadeIn 1.5s ease;
@@ -70,12 +71,12 @@
 
         .ticket {
             position: relative;
-            width: 650px;
-            height: 280px;
-            background: linear-gradient(135deg, #2a2015 0%, #120e0a 100%);
+            width: 680px;
+            height: 290px;
+            background: linear-gradient(135deg, #1f1a14 0%, #0d0a08 100%);
             border: 2px solid var(--gold-primary);
             border-radius: 8px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 25px rgba(212, 175, 55, 0.25);
             display: flex;
             cursor: pointer;
             overflow: hidden;
@@ -83,43 +84,43 @@
         }
 
         .ticket:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px) scale(1.015);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.95), 0 0 35px rgba(212, 175, 55, 0.4);
         }
 
         .ticket-stub {
-            width: 30%;
+            width: 32%;
             border-right: 2px dashed var(--gold-dark);
             padding: 2rem 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.3);
             position: relative;
         }
 
         .ticket-body {
-            width: 70%;
+            width: 68%;
             padding: 2rem 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background: radial-gradient(circle at right, rgba(212,175,55,0.05) 0%, transparent 70%);
+            background: radial-gradient(circle at right, rgba(212,175,55,0.08) 0%, transparent 70%);
         }
 
         .ticket-brand {
             font-family: var(--font-cinzel);
             color: var(--gold-primary);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             letter-spacing: 2px;
         }
 
         .ticket-title {
             font-family: var(--font-cinzel);
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             color: var(--gold-light);
-            margin-top: 0.5rem;
+            margin-top: 0.4rem;
             letter-spacing: 1px;
         }
 
@@ -147,7 +148,7 @@
 
         .ticket-callout {
             position: absolute;
-            bottom: -30px;
+            bottom: 35px;
             color: var(--gold-primary);
             font-size: 0.85rem;
             font-family: var(--font-sans);
@@ -155,18 +156,18 @@
             animation: pulse 2s infinite;
         }
 
-        /* Punch hole effect */
+        /* Punch Hole Effect */
         .punch-hole {
             position: absolute;
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             background-color: var(--bg-dark);
             border-radius: 50%;
             border: 2px solid var(--gold-primary);
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 12px rgba(0,0,0,0.9);
             z-index: 10;
             top: 50%;
-            left: 30%;
+            left: 32%;
             transform: translate(-50%, -50%) scale(0);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -182,12 +183,12 @@
         }
 
         /* ----------------------------------
-           Main Content Layout & Magazine Styles
+           Main Magazine / Brochure Layout
         ---------------------------------- */
         #main-content {
             opacity: 0;
             transition: opacity 1s ease 0.5s;
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -196,20 +197,18 @@
             opacity: 1;
         }
 
-        /* Header & Navigation */
         header {
-            padding: 3rem 0;
+            padding: 4rem 0 3rem;
             text-align: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            position: relative;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
         }
 
         .magazine-title {
             font-family: var(--font-cinzel);
             font-size: 3.5rem;
             font-weight: 900;
-            letter-spacing: 6px;
-            background: linear-gradient(135deg, #fff 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
@@ -217,21 +216,22 @@
 
         .magazine-subtitle {
             font-family: var(--font-cinzel);
-            font-size: 0.9rem;
-            letter-spacing: 4px;
+            font-size: 0.85rem;
+            letter-spacing: 5px;
             color: var(--text-muted);
             text-transform: uppercase;
         }
 
+        /* TOC Navigation */
         nav.toc-nav {
-            margin: 3rem 0;
-            padding: 1.5rem;
-            background: rgba(18, 22, 32, 0.6);
+            margin: 2.5rem 0 4rem;
+            padding: 1.2rem 2rem;
+            background: rgba(16, 20, 30, 0.75);
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 4px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             position: sticky;
-            top: 20px;
+            top: 15px;
             z-index: 100;
         }
 
@@ -247,12 +247,12 @@
             color: var(--text-light);
             text-decoration: none;
             font-family: var(--font-sans);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
             transition: color 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .toc-list a span {
@@ -265,10 +265,10 @@
             color: var(--gold-light);
         }
 
-        /* Sections Layout */
+        /* Section Commons */
         section {
-            padding: 6rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .section-header {
@@ -280,9 +280,9 @@
             font-family: var(--font-cinzel);
             font-size: 4rem;
             font-weight: 700;
-            color: rgba(212, 175, 55, 0.15);
+            color: rgba(212, 175, 55, 0.12);
             position: absolute;
-            top: -2.5rem;
+            top: -2.7rem;
             left: -1rem;
             z-index: -1;
         }
@@ -297,188 +297,186 @@
 
         .section-subtitle-en {
             font-family: var(--font-cinzel);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--gold-primary);
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-top: 0.3rem;
+            margin-top: 0.2rem;
         }
 
-        /* Magazine Layout Grids */
+        /* Layout Grids & Cards */
         .grid-2col {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            gap: 3.5rem;
+            align-items: start;
         }
 
         .grid-3col {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .editorial-card {
             background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            padding: 2.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            padding: 2.2rem;
+            border-radius: 4px;
             position: relative;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
         }
 
         .editorial-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.45);
+            background: var(--bg-card-hover);
         }
 
         .quote-box {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-style: italic;
             border-left: 3px solid var(--gold-primary);
             padding-left: 1.5rem;
-            margin: 2rem 0;
+            margin: 1.5rem 0 2rem;
             color: var(--gold-light);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         p {
             color: var(--text-light);
-            opacity: 0.9;
+            opacity: 0.88;
             margin-bottom: 1.2rem;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             text-align: justify;
         }
 
-        /* Visual Containers (Placeholder Styles) */
-        .img-placeholder {
-            width: 100%;
-            height: 380px;
-            background: linear-gradient(45deg, #181d28, #252e42);
+        .tag {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            padding: 0.2rem 0.6rem;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-light);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 2px;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Section 02 Routes Timetable / Tree */
+        .route-box {
+            background: var(--bg-card);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--gold-primary);
-            font-family: var(--font-cinzel);
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
         }
 
-        .img-placeholder::after {
-            content: '';
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            pointer-events: none;
-        }
-
-        /* Specific Section Styling */
-        
-        /* 02. Route Map Table/List */
-        .route-timeline {
-            position: relative;
-            padding-left: 2rem;
-            border-left: 2px solid var(--gold-dark);
-            margin-top: 2rem;
-        }
-
-        .route-step {
-            position: relative;
-            margin-bottom: 2.5rem;
-        }
-
-        .route-step::before {
-            content: '';
-            position: absolute;
-            left: -2.6rem;
-            top: 0.3rem;
-            width: 1rem;
-            height: 1rem;
-            border-radius: 50%;
-            background: var(--gold-primary);
-            box-shadow: 0 0 10px var(--gold-primary);
-        }
-
-        .route-step h4 {
+        .route-title {
             font-family: var(--font-cinzel);
             color: var(--gold-light);
-            font-size: 1.2rem;
-        }
-
-        .route-step p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.3rem;
-        }
-
-        /* 04. Facilities Cards */
-        .facility-title {
-            font-family: var(--font-serif);
-            color: var(--gold-light);
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
             margin-bottom: 0.8rem;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
 
-        .facility-title span {
-            font-family: var(--font-cinzel);
-            font-size: 0.8rem;
+        .route-badge {
+            font-size: 0.7rem;
+            background: var(--burgundy);
+            color: #fff;
+            padding: 0.1rem 0.5rem;
+            border-radius: 3px;
+            font-family: var(--font-sans);
+        }
+
+        /* Section 03 World Cards */
+        .world-card {
+            border-top: 3px solid var(--gold-dark);
+        }
+
+        .world-meta {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
             color: var(--gold-primary);
+            margin-bottom: 0.5rem;
         }
 
-        /* 05. Crew / 06. Passengers Profiles */
+        /* Section 04 Timetable List */
+        .timetable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .timetable th, .timetable td {
+            padding: 0.8rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            text-align: left;
+        }
+
+        .timetable th {
+            font-family: var(--font-sans);
+            color: var(--gold-primary);
+            font-weight: 600;
+        }
+
+        /* Section 05 Crew Profiles */
         .profile-card {
-            background: linear-gradient(180deg, rgba(20,25,35,0.8) 0%, rgba(10,12,16,0.9) 100%);
+            background: linear-gradient(180deg, rgba(16,20,30,0.9) 0%, rgba(8,10,15,0.95) 100%);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 2rem;
+            padding: 2rem 1.5rem;
             text-align: center;
+            border-radius: 4px;
         }
 
         .profile-avatar {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             border: 2px solid var(--gold-primary);
-            margin: 0 auto 1.5rem;
-            background: #202636;
+            margin: 0 auto 1.2rem;
+            background: #171e2e;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-cinzel);
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--gold-light);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
         }
 
         .profile-role {
             font-family: var(--font-sans);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--gold-primary);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         .profile-name {
             font-family: var(--font-serif);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text-light);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
-        /* 07. Notice / Rules Layout */
+        /* Section 07 Guidelines */
         .notice-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .notice-item {
             background: rgba(255,255,255,0.02);
-            border-left: 2px solid var(--gold-primary);
+            border-left: 3px solid var(--gold-primary);
             padding: 1.5rem;
         }
 
@@ -487,7 +485,7 @@
             color: var(--gold-light);
             font-size: 0.95rem;
             margin-bottom: 0.5rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .notice-item p {
@@ -509,22 +507,22 @@
             font-size: 1.8rem;
             color: var(--gold-primary);
             letter-spacing: 4px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
-        /* Keyframe Animations */
+        /* Keyframes */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
+            0%, 100% { opacity: 0.5; }
             50% { opacity: 1; }
         }
 
         /* Responsive Design */
-        @media (max-width: 900px) {
+        @media (max-width: 960px) {
             .ticket {
                 width: 90vw;
                 height: auto;
@@ -539,7 +537,7 @@
                 width: 100%;
             }
             .punch-hole {
-                top: 30%;
+                top: 32%;
                 left: 50%;
             }
             .grid-2col, .grid-3col, .notice-grid {
@@ -549,71 +547,71 @@
                 font-size: 2.2rem;
             }
             nav.toc-nav {
-                display: none; /* Mobile optimization simplification */
+                display: none;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ----------------------------------
-         First View: Boarding Pass / Ticket
-    ---------------------------------- -->
+    <!-- ==========================================
+         00. First View: Boarding Pass / Ticket
+    =========================================== -->
     <div id="ticket-screen">
-        <div class="ticket-intro-text">Click the ticket to inspect & board</div>
+        <div class="ticket-intro-text">Inspect the Pass to Board The Orbis Express</div>
         <div class="ticket" id="ticket" onclick="punchAndEnterTicket()">
             <div class="punch-hole"></div>
             <div class="ticket-stub">
                 <div>
                     <div class="ticket-brand">ORBIS</div>
-                    <div style="font-family: var(--font-sans); font-size: 0.6rem; color: var(--text-muted);">EXPRESS PASS</div>
+                    <div style="font-family: var(--font-sans); font-size: 0.6rem; color: var(--text-muted);">세계순환열차 탑승권</div>
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold-light);">
-                    NO. 000-8812
+                <div style="font-family: var(--font-sans); font-size: 0.75rem; color: var(--gold-light); margin-top: 1rem;">
+                    NO. WN-ORBIS-001
                 </div>
             </div>
             <div class="ticket-body">
                 <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-family: var(--font-sans); font-size: 0.65rem; color: var(--gold-primary); letter-spacing: 2px;">LUXURY CONTINENTAL RAIL</span>
-                        <span style="font-family: var(--font-cinzel); font-size: 0.75rem; color: var(--text-muted);">FIRST CLASS</span>
+                    <div style="display: flex; justify-content: space-between; align- items: center;">
+                        <span style="font-family: var(--font-sans); font-size: 0.65rem; color: var(--gold-primary); letter-spacing: 2px;">SPECIAL DESIGNATED EXPRESS</span>
+                        <span style="font-family: var(--font-cinzel); font-size: 0.75rem; color: var(--text-muted);">ALL ACCESS</span>
                     </div>
                     <div class="ticket-title">ORBIS EXPRESS</div>
                 </div>
                 <div class="ticket-info">
                     <div>
-                        <span>Passenger</span>
-                        <strong>Honored Guest</strong>
+                        <span>Destination</span>
+                        <strong>모든 세계의 중심 (All Realms)</strong>
                     </div>
                     <div>
-                        <span>Departure</span>
-                        <strong>Grand Central</strong>
+                        <span>Fare Paid</span>
+                        <strong>가장 가치 있는 것 (Valuable)</strong>
                     </div>
                     <div>
                         <span>Car / Seat</span>
-                        <strong>Car 01 / Suite 1A</strong>
+                        <strong>무한객실 (Suite Class)</strong>
                     </div>
                     <div>
-                        <span>Date</span>
-                        <strong>Autumn / Unlimited</strong>
+                        <span>Status</span>
+                        <strong>불멸의 궤도 (Active)</strong>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="ticket-callout">[ 승차권을 클릭하여 검표 후 입장하세요 ]</div>
+        <div class="ticket-callout">[ 승차권을 클릭하여 검표 후 열차 내부로 진입하세요 ]</div>
     </div>
 
-    <!-- ----------------------------------
+    <!-- ==========================================
          Main Magazine / Brochure Content
-    ---------------------------------- -->
+    =========================================== -->
     <div id="main-content">
 
         <header>
             <h1 class="magazine-title">ORBIS EXPRESS</h1>
-            <div class="magazine-subtitle">The Sovereign of Luxury Rail Journeys • Special Brochure</div>
+            <div class="magazine-subtitle">특약지정 세계순환열차 • 공식 브로슈어 & 가이드북</div>
         </header>
 
-        <!-- Table of Contents Navigation -->
+        <!-- TOC Navigation -->
         <nav class="toc-nav">
             <ul class="toc-list">
                 <li><a href="#sec01"><span>01</span> 오르비스호</a></li>
@@ -631,23 +629,31 @@
             <div class="section-header">
                 <span class="section-num">01</span>
                 <h2 class="section-title">오르비스호 소개</h2>
-                <div class="section-subtitle-en">The Legend of Grand Express</div>
+                <div class="section-subtitle-en">The Sovereign of Multiverse Express</div>
             </div>
             <div class="grid-2col">
                 <div>
+                    <span class="tag">특약지정 세계순환열차</span>
                     <div class="quote-box">
-                        "철도 위의 궁전, 시공간을 넘나드는 위대한 여정의 시작"
+                        "혼돈을 달리는 유일한 매개체, 물리적 파괴가 불가능한 법칙 그 자체."
                     </div>
                     <p>
-                        '오르비스호(The Orbis)'는 대륙 최고급 상류층과 영빈들을 위해 설계된 초대형 호화 기차입니다. 클래식한 19세기 아르누보 양식의 외형과 첨단 엔지니어링 기술이 집약된 내부 공간은 승객에게 고풍스러운 우아함과 최상의 편안함을 동시에 제공합니다.
+                        <strong>특약지정 세계순환열차 '오르비스호'</strong>는 태초의 공허이자 모든 것의 시발점인 <strong>'혼돈'</strong> 속을 유영하며 서로 고립된 세계들을 연결하는 유일한 호화 왕복 열차입니다.
                     </p>
                     <p>
-                        바퀴가 궤도를 달리는 소리마저 고요한 음악이 되는 곳. 오르비스호는 단순한 이동 수단을 넘어, 승객 한 분 한 분의 삶에 단 하나뿐인 역사적 순간을 선사하는 궤도 위의 럭셔리 샌크추어리(Sanctuary)입니다.
+                        본 열차는 단순한 피조물이 아닙니다. 세계의 방호벽 틈새로 새어 들어가는 혼돈에너지를 흡수하고 정제하여 세계의 파괴를 막기 위해 <strong>'관리자'</strong>가 직접 제정한 법칙의 연장선입니다. 법칙 그 자체이기에 어떠한 수단으로도 물리적 파괴가 불가능합니다.
+                    </p>
+                    <p>
+                        스스로 생각하고 판단하는 의지(자아)를 지녔으나 생명체는 아니며, 오직 관리자가 선택한 <strong>'기관사'</strong>와 함께 고유의 시공간을 가로지르며 위대한 차원 순환의 임무를 수행하고 있습니다.
                     </p>
                 </div>
-                <div class="img-placeholder">
-                    <span>[ Visual Concept: Sunset of Orbis Express ]</span>
-                    <small style="margin-top: 10px; color: var(--text-muted); font-size: 0.75rem;">붉은 노을 속을 달리는 오르비스호의 웅장한 외관</small>
+                <div class="editorial-card" style="background: linear-gradient(135deg, rgba(58,28,74,0.3) 0%, rgba(16,20,30,0.8) 100%);">
+                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 1rem;">열차의 핵심 메커니즘</h3>
+                    <ul style="list-style: none; font-size: 0.88rem; color: var(--text-muted);">
+                        <li style="margin-bottom: 0.8rem;"><strong style="color: var(--gold-primary);">• 혼돈에너지 정제 Engine:</strong> 세계에 해로운 혼돈에너지를 흡수하여 열차의 동력, 자재, 최고급 식재료 및 주류로 변환합니다.</li>
+                        <li style="margin-bottom: 0.8rem;"><strong style="color: var(--gold-primary);">• 언어 자동 번역:</strong> 열차 내에 존재하는 모든 언어는 승객 개개인의 언어로 자동 번역되어 들립니다.</li>
+                        <li style="margin-bottom: 0.8rem;"><strong style="color: var(--gold-primary);">• 고유 시공간:</strong> 1개 노선당 7일의 고정 시간이 적용되며, AM 00:00부터 PM 11:59까지 정교한 시공간 규율을 유지합니다.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -656,30 +662,48 @@
         <section id="sec02">
             <div class="section-header">
                 <span class="section-num">02</span>
-                <h2 class="section-title">운행 노선</h2>
-                <div class="section-subtitle-en">Grand Continental Route</div>
+                <h2 class="section-title">운행 노선 및 정류장</h2>
+                <div class="section-subtitle-en">Circulation Routes & Station Intersects</div>
             </div>
+            
+            <p style="margin-bottom: 2rem;">
+                오르비스호의 정류장은 각 세계의 중심은하 틈새에 존재하며, 해당 세계의 시대상과 세계관을 반영한 몽환적인 분위기로 조성되어 있습니다. 매일 AM 00:00 관리자로부터 전송되는 운행자료를 바탕으로 기관사가 최종 중간역 및 정차 순서를 결정합니다.
+            </p>
+
             <div class="grid-2col">
-                <div class="img-placeholder" style="height: 450px;">
-                    <span>[ Visual Route Map ]</span>
-                    <small style="margin-top: 10px; color: var(--text-muted); font-size: 0.75rem;">대륙을 관통하는 세련된 스타일의 노선도</small>
-                </div>
                 <div>
-                    <p>오르비스호는 대륙의 가장 아름다운 절경만을 골라 관통하는 전용 횡단 노선을 운행합니다. 수공예로 다듬어진 전용 철로를 따라 계절의 변화와 대자연의 서사를 가장 가까이서 감상하십시오.</p>
-                    
-                    <div class="route-timeline">
-                        <div class="route-step">
-                            <h4>제1정차역: 루체른 중앙역 (Departure)</h4>
-                            <p>고풍스러운 고성 지대를 배경으로 여정이 시작됩니다. VIP 전용 라운지에서 웰컴 샴페인이 제공됩니다.</p>
+                    <div class="route-box">
+                        <div class="route-title">
+                            1노선 (황혼 - 만월 - 죽음)
+                            <span class="route-badge">7 Days Cycle</span>
                         </div>
-                        <div class="route-step">
-                            <h4>제2정차역: 실버라인 협곡 (Midway)</h4>
-                            <p>해발 2,000m의 만년설 산맥과 협곡을 지나는 구간. 오르비스호만의 전용 전망차에서 극적인 장관을 감상할 수 있습니다.</p>
+                        <p>신화적 신력의 세계에서 출발해 무협의 강호를 거쳐, 이상현상이 도래한 현대의 틈새로 연결되는 전통적인 정규 노선입니다.</p>
+                    </div>
+
+                    <div class="route-box">
+                        <div class="route-title">
+                            2노선 (만월 - 몽환 - 죽음)
+                            <span class="route-badge">7 Days Cycle</span>
                         </div>
-                        <div class="route-step">
-                            <h4>최종도착역: 솔라리스 해안 (Destination)</h4>
-                            <p>에메랄드빛 해안선과 일몰이 펼쳐지는 휴양 도시. 전용 하차 서비스와 호텔 리무진 연결이 지원됩니다.</p>
+                        <p>동양적 기운이 서린 무림과 다채로운 마법 종족들이 번성하는 판타지 세계를 아우르는 다채로운 여정입니다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="route-box">
+                        <div class="route-title">
+                            3노선 (몽환 - 연무 - 죽음)
+                            <span class="route-badge">7 Days Cycle</span>
                         </div>
+                        <p>마법 문명에서 초고도 미래 SF 세계로 이어지는 감각적인 차원 도약 노선입니다.</p>
+                    </div>
+
+                    <div class="route-box">
+                        <div class="route-title" style="color: var(--gold-primary);">
+                            4노선 (대통합 전 원류세계 순환)
+                            <span class="route-badge" style="background: var(--gold-dark);">Grand Line</span>
+                        </div>
+                        <p>황혼 → 만월 → 몽환 → 연무 → 죽음으로 이어지는 원류세계 전역 순환 대노선으로, 가장 웅장한 차원 경관을 제공합니다.</p>
                     </div>
                 </div>
             </div>
@@ -689,21 +713,44 @@
         <section id="sec03">
             <div class="section-header">
                 <span class="section-num">03</span>
-                <h2 class="section-title">세계관 안내</h2>
-                <div class="section-subtitle-en">World & Heritage</div>
+                <h2 class="section-title">원류세계 안내</h2>
+                <div class="section-subtitle-en">The Five Origin Worlds</div>
             </div>
+            
             <div class="grid-3col">
-                <div class="editorial-card">
-                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 1rem;">풍요와 전통의 시대</h3>
-                    <p>증기기관과 마법공학이 완벽한 조화를 이룬 은혜로운 시대. 오르비스호는 이 황금기의 정점에서 탄생한 기술과 예술의 결정체입니다.</p>
+                <div class="editorial-card world-card">
+                    <div class="world-meta">WN-A0001 • 신화 / 중세 유럽풍</div>
+                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 0.8rem;">01. 황혼 (Twilight)</h3>
+                    <p>신들이 인간을 다스리는 신화의 세계. 신력이 존재하며 오르비스호에 승차하는 초월자가 가장 많이 배출되는 거룩하고 고풍스러운 세계입니다.</p>
+                    <div style="font-size: 0.8rem; color: var(--gold-primary);">주 종족: 인간, 신족</div>
                 </div>
-                <div class="editorial-card">
-                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 1rem;">비밀스러운 궤도</h3>
-                    <p>일반 열차는 접근할 수 없는 결계 구역과 비밀스러운 사유지 노선을 지나며, 귀족들과 승인된 귀빈들에게만 허락된 비밀스러운 풍경을 선사합니다.</p>
+
+                <div class="editorial-card world-card">
+                    <div class="world-meta">WN-A0019 • 무협 / 고대 중국풍</div>
+                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 0.8rem;">02. 만월 (Full Moon)</h3>
+                    <p>무공과 문파, 세가가 어우러진 강호의 세계. 영물과 인간이 공존하며 대다수의 초월자가 강인한 전투계 무인들로 구성되어 있습니다.</p>
+                    <div style="font-size: 0.8rem; color: var(--gold-primary);">주 종족: 인간, 영물</div>
                 </div>
-                <div class="editorial-card">
-                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 1rem;">품격의 교류장</h3>
-                    <p>열차 내의 모든 공간은 정재계 인사, 예술가, 명망 있는 가문들이 자연스럽게 친목을 도모하고 사교를 즐길 수 있도록 세심하게 디자인되었습니다.</p>
+
+                <div class="editorial-card world-card">
+                    <div class="world-meta">WN-A0200 • 판타지 / 중세 유럽풍</div>
+                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 0.8rem;">03. 몽환 (Fantasy)</h3>
+                    <p>마력과 마법이 숨쉬는 땅. 엘프, 드워프, 수인, 드래곤 등 다양한 종족이 혼재하며 세대교체가 활발하여 다채로운 초월자가 승차합니다.</p>
+                    <div style="font-size: 0.8rem; color: var(--gold-primary);">주 종족: 인간, 수인, 엘프, 드워프, 드래곤</div>
+                </div>
+
+                <div class="editorial-card world-card">
+                    <div class="world-meta">WN-A0269 • SF / 초고도 미래</div>
+                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 0.8rem;">04. 연무 (Astral)</h3>
+                    <p>초고도 기계 기술의 발달로 항성 간 이동이 보편화된 은하 문명. 초월자는 매우 희소하지만 압도적인 과학 문명을 자랑합니다.</p>
+                    <div style="font-size: 0.8rem; color: var(--gold-primary);">주 종족: 인간, 외계종, 안드로이드</div>
+                </div>
+
+                <div class="editorial-card world-card" style="grid-column: span 2;">
+                    <div class="world-meta">WN-B0007 • 괴담·초상현상 / 현대</div>
+                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 0.8rem;">05. 죽음 (Abyssal)</h3>
+                    <p>과거 내부 다툼으로 방호벽이 손상되어 침투혼돈체와 혼돈에너지 유입이 높습니다. '괴담관리국'이 초상현상을 격리·관리하고 있으며, 차원의 틈새가 자주 발생하여 초월자가 아닌 일반 손님들도 괴담에 휩싸이듯 승차하곤 합니다.</p>
+                    <div style="font-size: 0.8rem; color: var(--gold-primary);">주 종족: 인간 (초월자 없음)</div>
                 </div>
             </div>
         </section>
@@ -712,30 +759,51 @@
         <section id="sec04">
             <div class="section-header">
                 <span class="section-num">04</span>
-                <h2 class="section-title">열차 내 최고급 시설</h2>
-                <div class="section-subtitle-en">Onboard Amenities</div>
+                <h2 class="section-title">열차 내부 시설 & 타임테이블</h2>
+                <div class="section-subtitle-en">Onboard Facilities & Timetable</div>
             </div>
-            <div class="grid-3col">
-                <div class="editorial-card">
-                    <div class="facility-title">
-                        스위트 객실
-                        <span>Car 01-04</span>
-                    </div>
-                    <p>마호가니 목재와 앤티크 실크로 장식된 전용 스위트룸. 24시간 집사 서비스와 개인 전용 욕실이 완비되어 있습니다.</p>
+
+            <div class="grid-2col" style="margin-bottom: 3rem;">
+                <div>
+                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 1rem;">럭셔리 공용 & 전용 공간</h3>
+                    <p><strong>• 무한객실 (Car Service):</strong> 내부 공간 확장 기술이 적용되어 손님 1명당 넓은 원룸형 고급 객실이 제공됩니다. 대형 침대, 소파, 욕실, 기관사 직통 전화기가 비치되어 있습니다.</p>
+                    <p><strong>• 식당칸 & 바 칸 (Dining & Bar):</strong> 불꽃 헤드 요리사와 와인잔 헤드 바텐더가 상주하며 모든 세계의 요리와 주류를 제공합니다.</p>
+                    <p><strong>• 전망칸 (Lounge):</strong> 통유리 넘어 유영하는 혼돈의 절경을 감상하는 사교 공간. 책, 카드, 바둑판, 보드게임, 오락기 등이 구비되어 있습니다.</p>
+                    <p><strong>• 엔진실 & 운전실:</strong> 혼돈에너지를 정제하는 핵심 설비 및 노선 모니터가 위치한 구역으로 일반 승객의 출입이 제한됩니다.</p>
                 </div>
+
                 <div class="editorial-card">
-                    <div class="facility-title">
-                        파인 다이닝 '벨에포크'
-                        <span>Car 05</span>
-                    </div>
-                    <p>미슐랭 3스타 셰프 군단이 펼치는 대륙 최고급 코스 요리. 세련된 은기구와 빈티지 와인 셀러가 완비되어 있습니다.</p>
-                </div>
-                <div class="editorial-card">
-                    <div class="facility-title">
-                        파노라마 라운지 & 바
-                        <span>Car 06</span>
-                    </div>
-                    <p>통유리로 설계된 천장과 벽면을 통해 밤하늘의 은하수를 감상할 수 있는 공간. 재즈 라이브 연주가 상시 개최됩니다.</p>
+                    <h3 style="color: var(--gold-light); font-family: var(--font-serif); margin-bottom: 1rem;">열차 내 표준 시간표</h3>
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th>시간 (Time)</th>
+                                <th>운영 시설 및 서비스</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>AM 07:00 ~ 09:00</td>
+                                <td>식당칸 운영 (아침 식사)</td>
+                            </tr>
+                            <tr>
+                                <td>AM 11:00 ~ PM 01:00</td>
+                                <td>식당칸 운영 (점심 식사)</td>
+                            </tr>
+                            <tr>
+                                <td>PM 06:00 ~ PM 08:00</td>
+                                <td>식당칸 운영 (저녁 식사)</td>
+                            </tr>
+                            <tr>
+                                <td>PM 10:00 ~ AM 04:00</td>
+                                <td>바(Bar) 칸 전용 운영 (식당 비운영)</td>
+                            </tr>
+                            <tr>
+                                <td>AM 00:00 ~ AM 06:00</td>
+                                <td>야간 시간 (공용공간 조명 감등)</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
@@ -744,27 +812,30 @@
         <section id="sec05">
             <div class="section-header">
                 <span class="section-num">05</span>
-                <h2 class="section-title">승무원 안내</h2>
-                <div class="section-subtitle-en">Dedicated Crew</div>
+                <h2 class="section-title">열차 승무원</h2>
+                <div class="section-subtitle-en">Dedicated Onboard Crew</div>
             </div>
+            
             <div class="grid-3col">
                 <div class="profile-card">
                     <div class="profile-avatar">C</div>
-                    <div class="profile-role">Chief Conductor</div>
-                    <div class="profile-name">에드워드 폰 바론</div>
-                    <p>30년간 왕실 전용 열차를 지휘해 온 완벽주의자. 오르비스호의 운행 안전과 승객의 안전을 책임집니다.</p>
+                    <div class="profile-role">Train Crew</div>
+                    <div class="profile-name">말랑 승무원들</div>
+                    <p>열차가 직접 생성한 동글말랑한 인외 생명체들. 승객 케어 및 열차 관리를 보조하며 비상시 경호 모드가 탑재되어 있습니다.</p>
                 </div>
+
                 <div class="profile-card">
-                    <div class="profile-avatar">M</div>
-                    <div class="profile-role">Head Butler</div>
-                    <div class="profile-name">마들렌 샤를</div>
-                    <p>승객의 아주 작은 취향까지 파악하는 맞춤형 버틀러 팀의 수장. 객실 내 정갈한 휴식을 보장합니다.</p>
-                </div>
-                <div class="profile-card">
-                    <div class="profile-avatar">S</div>
+                    <div class="profile-avatar" style="border-color: #ff6b35; color: #ff6b35;">F</div>
                     <div class="profile-role">Executive Chef</div>
-                    <div class="profile-name">실베스터 크루즈</div>
-                    <p>대륙 궁정 요리 대회 우승자 출신. 정차역마다 공급되는 가장 fresh한 제철 식재료로 예술을 선보입니다.</p>
+                    <div class="profile-name">요리사 (Flame Head)</div>
+                    <p>머리가 붉은 불꽃 오브젝트로 이루어진 유일무이한 식당 담당자. 모든 세계의 진미와 요리를 완벽하게 조리해 냅니다.</p>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-avatar" style="border-color: #7b2cbf; color: #7b2cbf;">B</div>
+                    <div class="profile-role">Master Bartender</div>
+                    <div class="profile-name">바텐더 (Glass Head)</div>
+                    <p>우아한 와인잔 모양의 오브젝트 헤드를 가진 바 담당자. 차원 고유의 주류와 맞춤형 음료를 제공합니다.</p>
                 </div>
             </div>
         </section>
@@ -773,25 +844,49 @@
         <section id="sec06">
             <div class="section-header">
                 <span class="section-num">06</span>
-                <h2 class="section-title">주요 승객 명부</h2>
-                <div class="section-subtitle-en">Distinguished Passengers</div>
+                <h2 class="section-title">주요 승객 명단</h2>
+                <div class="section-subtitle-en">Prominent Trans-Dimensional Passengers</div>
             </div>
-            <div class="grid-2col">
-                <div class="profile-card" style="display: flex; gap: 2rem; text-align: left; align-items: center;">
-                    <div class="profile-avatar" style="flex-shrink: 0; margin: 0;">V</div>
-                    <div>
-                        <div class="profile-role">Car 01 / Royal Suite</div>
-                        <div class="profile-name">빅토리아 대공비</div>
-                        <p>문화 예술계의 최대 후원자. 이번 여정을 통해 오르비스호 내에서 비밀스러운 자선 경매회를 개최할 예정입니다.</p>
-                    </div>
+
+            <div class="grid-3col">
+                <div class="editorial-card">
+                    <span class="tag">황혼 / 신족</span>
+                    <h4 style="color: var(--gold-light); font-size: 1.1rem;">아르미스 & 메르필리아</h4>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+                        하늘과 여행을 관장하는 신 '아르미스'와 사랑과 미를 관장하는 여신 '메르필리아'. 황혼 세계관의 대표적 신족 승객입니다.
+                    </p>
                 </div>
-                <div class="profile-card" style="display: flex; gap: 2rem; text-align: left; align-items: center;">
-                    <div class="profile-avatar" style="flex-shrink: 0; margin: 0;">A</div>
-                    <div>
-                        <div class="profile-role">Car 02 / Grand Suite</div>
-                        <div class="profile-name">아르투어 켈러 백작</div>
-                        <p>대륙 철도망 구축에 기여한 실업가. 오르비스호의 창립 후원자이자 열렬한 수집가입니다.</p>
-                    </div>
+
+                <div class="editorial-card">
+                    <span class="tag">만월 / 인간</span>
+                    <h4 style="color: var(--gold-light); font-size: 1.1rem;">묵휘 (검성)</h4>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+                        차분하고 담백하며 직설적인 무협식 어투를 사용하는 강호 최고의 검사(ISTP). 고독하게 차원의 궤도를 관조합니다.
+                    </p>
+                </div>
+
+                <div class="editorial-card">
+                    <span class="tag">몽환 / 드래곤</span>
+                    <h4 style="color: var(--gold-light); font-size: 1.1rem;">로샨 (황금룡)</h4>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+                        몽환 세계의 고귀한 황금룡. 마법과 정령의 정점에 선 존재로 열차의 고유한 시공간을 즐깁니다.
+                    </p>
+                </div>
+
+                <div class="editorial-card">
+                    <span class="tag">연무 / 외계종 & 안드로이드</span>
+                    <h4 style="color: var(--gold-light); font-size: 1.1rem;">이오 & Ω(오메가)</h4>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+                        기체 생명체 '이오'와 아카식 레코드 데이터베이스가 탑재된 안드로이드 '오메가'. 과학 문명의 정수를 보여줍니다.
+                    </p>
+                </div>
+
+                <div class="editorial-card" style="grid-column: span 2;">
+                    <span class="tag">죽음 / 괴담관리국</span>
+                    <h4 style="color: var(--gold-light); font-size: 1.1rem;">이현 & 한여름</h4>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">
+                        죽음 세계관의 베테랑 직원 '이현'과 신입 '한여름'. 열차 차원의 틈새를 통해 승차하며 괴담 현상 및 침투혼돈체 이상 현상을 조사합니다.
+                    </p>
                 </div>
             </div>
         </section>
@@ -800,25 +895,29 @@
         <section id="sec07">
             <div class="section-header">
                 <span class="section-num">07</span>
-                <h2 class="section-title">승차 및 이용 안내</h2>
-                <div class="section-subtitle-en">Passenger Guidelines</div>
+                <h2 class="section-title">승차 및 탑승 수칙</h2>
+                <div class="section-subtitle-en">Boarding Rules & Regulations</div>
             </div>
+
             <div class="notice-grid">
                 <div class="notice-item">
-                    <h5>드레스 코드 (Dress Code)</h5>
-                    <p>디너 타임(19:00 이후) 파인 다이닝 및 라운지 이용 시 블랙 타이(Black Tie) 또는 정장 착용이 필수입니다.</p>
+                    <h5>티켓 발권 및 지불 (Ticket Policy)</h5>
+                    <p>티켓은 정류장 매표소에서 구매할 수 있으며, 지불 가치는 승객 본인 기준 가장 가치 있는 무형적·개념적 가치도 포함됩니다. 미구매 탑승 시 기관사를 통해 긴급 발권이 가능합니다.</p>
                 </div>
+
                 <div class="notice-item">
-                    <h5>수하물 서비스 (Luggage Handling)</h5>
-                    <p>승차 2시간 전 전용 컨시어지를 통해 수하물을 위탁하시면, 체크인 시 객실 내에 완벽히 배치해 드립니다.</p>
+                    <h5>세계 법칙 '고립' 관련 안내 (World Isolation)</h5>
+                    <p>초월자가 다른 세계에 하차할 경우 해당 생태계 부적합 및 세계법칙(고립) 위반으로 인해 힘이 약화되며 장기 체류가 불가능합니다.</p>
                 </div>
+
                 <div class="notice-item">
-                    <h5>객실 내 보안 및 정숙 (Privacy & Quiet)</h5>
-                    <p>모든 객실은 방음 설계되어 있으며, 타 승객의 프라이버시를 위해 복도 및 공용 공간에서의 과도한 촬영은 제한됩니다.</p>
+                    <h5>기관사 권한 및 보안 (Conductor Authority)</h5>
+                    <p>기관사는 승객 강제 퇴출(하차명령) 및 긴급 정차 권한을 가집니다. 열차 내부에서는 혼돈체로부터의 완전한 안전이 보장됩니다.</p>
                 </div>
+
                 <div class="notice-item">
-                    <h5>24시간 버틀러 콜 (Butler Service)</h5>
-                    <p>객실 내 비치된 전용 인터폰을 통해 언제든 전담 버틀러를 호출하여 음료 주문 및 정돈 서비스를 받으실 수 있습니다.</p>
+                    <h5>객실 내 인터폰 이용 (Room Service)</h5>
+                    <p>각 객실에 비치된 전용 전화기는 운전실의 기관사와 직통으로 연결되어 있으며, 서비스 요청 및 문의가 가능합니다.</p>
                 </div>
             </div>
         </section>
@@ -826,30 +925,31 @@
         <footer>
             <div class="footer-logo">ORBIS EXPRESS</div>
             <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem;">
-                &copy; 2026 ORBIS EXPRESS RAILWAY COMPANY. ALL RIGHTS RESERVED.
+                특약지정 세계순환열차 오르비스호 • 관리자 제정 차원 순환 시스템
+            </p>
+            <p style="text-align: center; color: rgba(212,175,55,0.4); font-size: 0.75rem; margin-top: 0.5rem;">
+                &copy; 2026 ORBIS EXPRESS. ALL RIGHTS RESERVED.
             </p>
         </footer>
 
     </div>
 
-    <!-- JavaScript for Ticket Animation -->
+    <!-- Ticket Interaction Script -->
     <script>
         function punchAndEnterTicket() {
             const ticket = document.getElementById('ticket');
             const ticketScreen = document.getElementById('ticket-screen');
             const mainContent = document.getElementById('main-content');
 
-            // 1. 구멍 뚫리는 모션 (클래스 추가)
+            // 1. 구멍이 뚫리는 검표 모션
             ticket.classList.add('punched');
 
-            // 2. 잠시 후 티켓 화면이 옆으로 빠지며 메인 화면 등장
+            // 2. 검표 완료 후 화면이 옆으로 슬라이드되며 본문 진입
             setTimeout(() => {
                 ticketScreen.classList.add('ticket-screen-out');
                 mainContent.classList.add('visible');
-                
-                // 스크롤 가능하도록 해제 (필요시)
                 document.body.style.overflowY = 'auto';
-            }, 700);
+            }, 600);
         }
     </script>
 </body>
