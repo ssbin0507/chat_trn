@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>특약지정 세계순환열차 오르비스호 승객 안내서</title>
+    <title>오르비스호 안내서</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- 폰트 추가: 호화 열차 고풍스러운 폰트 (Cinzel Decorative, Playfair Display, Pinyon Script, Special Elite) -->
+    <!-- 폰트 추가: 호화 열차 고풍스러운 폰트 -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;800&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Serif+KR:wght@300;400;600;700;900&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Special+Elite&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -35,10 +35,12 @@
             --charcoal: #1c1311;
             --shadow-gold: rgba(197, 160, 89, 0.3);
             --shadow-dark: rgba(0, 0, 0, 0.4);
-            /* 티켓 전용 고풍스러운 버건디 & 샴페인 골드 시스템 */
-            --ticket-bg: #16080b;
-            --ticket-gold: #d4af37;
-            --ticket-gold-light: #f3e5ab;
+            
+            /* 진짜 호화열차 골드 & 버건디 시스템 */
+            --ticket-bg: #140508;
+            --ticket-gold: #dfb76c;
+            --ticket-gold-light: #fdf3d6;
+            --ticket-gold-dark: #99742e;
             --ticket-accent: #8b0000;
         }
 
@@ -58,7 +60,7 @@
         }
 
         /* ==========================================================================
-           1. FIRST SCREEN: REAL LUXURY GRAND ORIENT TICKET (DESIGN UPDATED)
+           1. FIRST SCREEN: REAL LUXURY GRAND ORIENT TICKET
            ========================================================================== */
         #ticket-screen {
             position: fixed;
@@ -72,18 +74,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-            box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.9);
-        }
-
-        .ticket-screen-title {
-            color: var(--brass-light);
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 1.3rem;
-            letter-spacing: 6px;
-            margin-bottom: 30px;
-            text-align: center;
-            text-shadow: 0 0 12px rgba(226, 195, 128, 0.5);
+            transition: transform 0.9s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.8s ease;
+            box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.95);
         }
 
         .ticket-wrapper {
@@ -94,27 +86,30 @@
         }
 
         .ticket-wrapper:hover {
-            transform: scale(1.025) translateY(-5px);
+            transform: scale(1.02) translateY(-4px);
         }
 
-        /* 호화 열차 금박 패브릭 티켓 프레임 */
+        /* 호화 열차 금박 클래식 티켓 프레임 */
         .luxury-ticket {
-            width: 860px;
-            height: 330px;
+            width: 900px;
+            height: 350px;
             display: flex;
             position: relative;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.9), 0 0 40px rgba(197, 160, 89, 0.15);
+            box-shadow: 
+                0 35px 80px rgba(0,0,0,0.95), 
+                0 0 50px rgba(223, 183, 108, 0.2),
+                inset 0 0 2px rgba(255,255,255,0.2);
             border-radius: 8px;
             overflow: visible;
         }
 
-        /* 벨벳 & 양각 아르누보 질감의 승차권 바탕 */
+        /* 벨벳 질감 & 기요셰 패턴 바탕 */
         .ticket-main, .ticket-stub {
             background-color: var(--ticket-bg);
             background-image: 
-                radial-gradient(ellipse at center, rgba(65, 12, 21, 0.85) 0%, rgba(18, 5, 8, 0.98) 100%),
-                repeating-linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0px, rgba(212, 175, 55, 0.03) 1px, transparent 1px, transparent 10px),
-                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M30 0l15 30-15 30L15 30z'/%3E%3C/g%3E%3C/svg%3E");
+                radial-gradient(ellipse at center, rgba(88, 17, 26, 0.85) 0%, rgba(15, 3, 6, 0.98) 100%),
+                repeating-linear-gradient(45deg, rgba(223, 183, 108, 0.03) 0px, rgba(223, 183, 108, 0.03) 1px, transparent 1px, transparent 8px),
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23dfb76c' fill-opacity='0.04'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Ccircle cx='40' cy='40' r='18' fill='none' stroke='%23dfb76c' stroke-width='0.5'/%3E%3C/g%3E%3C/svg%3E");
             box-sizing: border-box;
             color: var(--ticket-gold-light);
         }
@@ -122,86 +117,117 @@
         /* 왼쪽 승차권 본체 */
         .ticket-main {
             flex: 1;
-            padding: 24px 32px;
+            padding: 24px 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             border: 3px solid var(--ticket-gold);
-            border-right: none;
+            border-right: 2px dashed transparent; /* 절취선을 위한 투명 테두리 적용 */
             border-radius: 8px 0 0 8px;
-            box-shadow: inset 0 0 25px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.95);
         }
 
+        /* 좌측 홈 반원 파임 */
         .ticket-main::before {
             content: '';
             position: absolute;
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             background: #0a0204;
             border-radius: 50%;
-            left: -14px;
+            left: -13px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 20;
-            box-shadow: inset -3px 0 5px rgba(0,0,0,0.8);
+            box-shadow: inset -3px 0 6px rgba(0,0,0,0.9);
             border-right: 3px solid var(--ticket-gold);
         }
 
-        /* 섬세한 액자식 아르누보 금박 테두리 */
+        /* 고풍스러운 이중 금박 테두리 */
         .ticket-inner-border {
             position: absolute;
-            top: 7px; left: 7px; right: 7px; bottom: 7px;
-            border: 1px solid rgba(212, 175, 55, 0.6);
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
+            border: 1.5px solid var(--ticket-gold);
             pointer-events: none;
         }
         .ticket-inner-border::after {
             content: '';
             position: absolute;
             top: 4px; left: 4px; right: 4px; bottom: 4px;
-            border: 1px dashed rgba(243, 229, 171, 0.35);
+            border: 1px dashed rgba(223, 183, 108, 0.4);
         }
 
         .ticket-header-group {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(223, 183, 108, 0.4);
+            padding-bottom: 8px;
+            margin-top: 4px;
         }
 
-        .ticket-sub {
+        .ticket-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-family: 'Cinzel Decorative', serif;
-            font-size: 0.72rem;
-            letter-spacing: 3px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
             color: var(--ticket-gold);
             font-weight: 700;
         }
 
         .ticket-class {
             font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            background: linear-gradient(135deg, #c5a059 0%, #8c6d32 100%);
+            font-size: 0.7rem;
+            background: linear-gradient(135deg, #e2c380 0%, #8c6d32 100%);
             color: #120507;
-            padding: 3px 12px;
+            padding: 3px 10px;
             border-radius: 2px;
             letter-spacing: 2px;
             font-weight: 800;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            text-transform: uppercase;
+        }
+
+        .ticket-body-center {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 6px 0;
         }
 
         .ticket-main-title {
             font-family: 'Cinzel Decorative', 'Nanum Myeongjo', serif;
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 900;
-            color: #fff;
-            background: linear-gradient(180deg, #fffdf8 20%, #d4af37 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #f3e5ab 40%, #c5a059 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 6px 0 2px;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.9));
+        }
+
+        .ticket-serial-box {
+            text-align: right;
+        }
+
+        .ticket-serial-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            color: rgba(243, 229, 171, 0.5);
             letter-spacing: 2px;
-            text-align: center;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+        }
+
+        .ticket-serial-no {
+            font-family: 'Special Elite', monospace;
+            font-size: 1.1rem;
+            color: #e63946;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 4px rgba(230, 57, 70, 0.4);
         }
 
         /* 여정 노선 디자인 (클래식 정류장 표현) */
@@ -209,64 +235,106 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin: 8px 0;
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.45);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 10px 18px;
+            background: rgba(0, 0, 0, 0.55);
+            border: 1px solid rgba(223, 183, 108, 0.35);
             border-radius: 4px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
+            box-shadow: inset 0 0 12px rgba(0,0,0,0.8);
         }
 
         .station-box {
             display: flex;
             flex-direction: column;
-            align-items: center;
+        }
+
+        .station-box.right {
+            text-align: right;
         }
 
         .station-label {
             font-family: 'Cinzel', serif;
-            font-size: 0.6rem;
-            color: rgba(243, 229, 171, 0.6);
+            font-size: 0.58rem;
+            color: rgba(223, 183, 108, 0.7);
             letter-spacing: 2px;
             margin-bottom: 2px;
+            text-transform: uppercase;
         }
 
         .station-name {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            color: var(--ticket-gold-light);
+            color: #fff;
+            letter-spacing: 1px;
         }
 
-        .route-arrow {
+        .route-path {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             color: var(--ticket-gold);
-            font-size: 1.2rem;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+            gap: 2px;
+        }
+
+        .route-path i {
+            font-size: 1rem;
+            filter: drop-shadow(0 0 6px var(--ticket-gold));
+        }
+
+        .route-line {
+            width: 90px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ticket-gold), transparent);
+            margin-top: 2px;
         }
 
         .ticket-footer {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            font-size: 0.72rem;
-            color: rgba(243, 229, 171, 0.7);
+            font-size: 0.68rem;
+            color: rgba(243, 229, 171, 0.75);
             line-height: 1.5;
+            padding-bottom: 2px;
+        }
+
+        .ticket-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .info-item strong {
+            color: var(--ticket-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            display: block;
         }
 
         /* 붉은 밀랑 실인 (Wax Seal) 스탬프 효과 */
         .ticket-seal {
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #a81c2d 0%, #4a060e 100%);
+            background: radial-gradient(circle at 30% 30%, #b81d24 0%, #4a060e 100%);
             border: 2px solid var(--ticket-gold);
             display: flex;
             justify-content: center;
             align-items: center;
             color: var(--ticket-gold-light);
-            font-family: 'Cinzel Decorative', serif;
             font-size: 1.3rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.6), inset 0 0 8px rgba(0,0,0,0.5);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.8), inset 0 0 10px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        .ticket-seal::after {
+            content: 'ORBIS';
+            position: absolute;
+            font-family: 'Cinzel', serif;
+            font-size: 0.45rem;
+            bottom: 6px;
+            letter-spacing: 1px;
+            color: var(--ticket-gold);
         }
 
         /* 절취선 및 타공 디테일 */
@@ -294,7 +362,7 @@
             top: 0;
             bottom: 0;
             width: 0;
-            border-right: 2px dashed rgba(212, 175, 55, 0.6);
+            border-right: 2px dashed rgba(223, 183, 108, 0.7);
             z-index: 25;
         }
 
@@ -302,40 +370,39 @@
         .ticket-stub {
             width: 262px;
             height: 100%;
-            padding: 22px 18px;
+            padding: 20px 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             border: 3px solid var(--ticket-gold);
-            border-left: none;
+            border-left: 2px dashed transparent; /* 절취선을 위한 투명 테두리 적용 */
             border-radius: 0 8px 8px 0;
-            transform-origin: top left;
-            transition: transform 0.8s cubic-bezier(0.5, 0, 0.15, 1), opacity 0.7s ease, filter 0.5s ease;
+            transform-origin: left center;
             z-index: 10;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.95);
         }
 
         .ticket-stub::after {
             content: '';
             position: absolute;
-            width: 26px;
-            height: 26px;
+            width: 24px;
+            height: 24px;
             background: #0a0204;
             border-radius: 50%;
-            right: -14px;
+            right: -13px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 20;
-            box-shadow: inset 3px 0 5px rgba(0,0,0,0.8);
+            box-shadow: inset 3px 0 6px rgba(0,0,0,0.9);
             border-left: 3px solid var(--ticket-gold);
         }
 
         .stub-stamp-banner {
-            background: linear-gradient(90deg, transparent 0%, rgba(139, 0, 0, 0.8) 50%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgba(139, 0, 0, 0.85) 50%, transparent 100%);
             color: var(--ticket-gold-light);
             font-family: 'Cinzel', serif;
-            font-size: 0.68rem;
+            font-size: 0.65rem;
             font-weight: 700;
             text-align: center;
             padding: 3px 0;
@@ -345,58 +412,104 @@
             text-transform: uppercase;
         }
 
-        .ticket-stub-header {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            color: var(--ticket-gold);
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-align: center;
-            margin-top: 4px;
+        .ticket-stub-body {
+            width: 100%;
+            height: 80%;
+            background: rgba(0, 0, 0, 0.35);
+            padding: 8px 6px;
+            border-radius: 4px;
+            border: 2px solid rgba(223, 183, 108, 0.2);
+	    display: flex;
+	    flex-direction: column; /* 텍스트(요소)들을 세로 방향으로 나열 */
+	    justify-content: center; /* [세로 기준] 완벽한 정중앙 배치 */
+	    align-items: center;     /* [가로 기준] 완벽한 정중앙 배치 */
+	    text-align: center;      /* 줄바꿈 시 텍스트 자체 중앙 정렬 */
         }
 
-        .ticket-stub-body {
-            margin-top: 4px;
-            font-size: 0.75rem;
+        .ticket-stub-body h3{
+ 	    font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
             color: var(--ticket-gold-light);
-            line-height: 1.5;
-            text-align: center;
         }
+
+        .ticket-stub-body p{
+ 	    font-family: 'Nanum Myeongjo', serif;
+            font-size: 0.8rem;
+            color: var(--ticket-gold-light);
+        }
+
 
         .ticket-stub-footer {
             text-align: center;
-            border-top: 1px dashed rgba(212, 175, 55, 0.4);
+            border-top: 1px dashed rgba(223, 183, 108, 0.4);
             padding-top: 6px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 3px;
         }
 
-        .ticket-number {
+        .stub-barcode {
             font-family: 'Special Elite', monospace;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--ticket-gold);
-            font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
-        /* ANIMATED TEAR-OFF EFFECT */
-        .ticket-stub.torn-off {
-            transform: translate(140px, 60px) rotate(22deg) scale(0.95);
+        /* ==========================================================================
+           TEAR ANIMATION STAGES (드드득 -> 스르륵 -> 본문 퇴장)
+           ========================================================================== */
+        
+        /* 티켓 뜯을 때 점선(절취선)에 맞게 뜯어지는 효과 */
+        @media (min-width: 901px) {
+            .luxury-ticket:has(.ticket-stub.tearing) .ticket-main,
+            .luxury-ticket:has(.ticket-stub.fade-out) .ticket-main {
+                border-right-color: rgba(223, 183, 108, 0.7);
+            }
+            
+            .luxury-ticket:has(.ticket-stub.tearing) .ticket-stub,
+            .luxury-ticket:has(.ticket-stub.fade-out) .ticket-stub {
+                border-left-color: rgba(223, 183, 108, 0.7);
+            }
+            
+            /* 실제 뜯어질 때 기존에 덮고 있던 정중앙 점선을 투명화하여 분리되는 점선을 드러냄 */
+            .luxury-ticket:has(.ticket-stub.tearing) .perforation-line,
+            .luxury-ticket:has(.ticket-stub.fade-out) .perforation-line {
+                opacity: 0;
+                transition: opacity 0s;
+            }
+        }
+
+        /* Step 1: 드드득 뜯기는 커스텀 진동 키프레임 */
+        @keyframes stutterTear {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(52px, 28px) rotate(12deg); }
+        }
+
+        .ticket-stub.tearing {
+            animation: stutterTear 0.65s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
+        /* Step 2: 스텁이 부드럽게 페이드아웃 되며 소멸 */
+        .ticket-stub.fade-out {
             opacity: 0;
-            filter: blur(2px);
+            transform: translate(110px, 45px) rotate(18deg) scale(0.92);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: none;
+        }
+
+        /* Step 3: 티켓 스크린 전체가 옆으로 슬라이드하며 사라짐 */
+        #ticket-screen.slide-out {
+            transform: translateX(-100%);
+            opacity: 0;
             pointer-events: none;
         }
 
         .click-hint {
-            margin-top: 30px;
+            margin-top: 28px;
             color: var(--brass-light);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             letter-spacing: 3px;
             animation: pulseHint 1.8s infinite ease-in-out;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-family: 'Cinzel', 'Noto Serif KR', serif;
         }
 
@@ -405,14 +518,8 @@
             50% { opacity: 1; transform: translateY(-4px); }
         }
 
-        #ticket-screen.slide-out {
-            transform: translateX(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-
         /* ==========================================================================
-           2. MAIN HANDBOOK CONTAINER & LAYOUT
+           2. MAIN HANDBOOK CONTAINER & LAYOUT (본문 - 기존 내용 완전 유지)
            ========================================================================== */
         #handbook-container {
             width: 1200px;
@@ -495,9 +602,7 @@
             border-radius: 20px;
         }
 
-        /* ==========================================================================
-           3. CHAPTER NAVIGATION TABS
-           ========================================================================== */
+        /* CHAPTER NAVIGATION TABS */
         nav.chapter-nav {
             background: #2b0b11;
             border-bottom: 2px solid var(--brass-gold);
@@ -543,9 +648,7 @@
             font-weight: 700;
         }
 
-        /* ==========================================================================
-           4. MAIN CONTENT AREA & CHAPTER PANELS
-           ========================================================================== */
+        /* MAIN CONTENT AREA & CHAPTER PANELS */
         main.handbook-body {
             flex: 1;
             padding: 40px 50px;
@@ -846,12 +949,9 @@
 <body>
 
     <!-- ==========================================================================
-         START SCREEN: GRAND ORIENT LUXURY TICKET
+         START SCREEN: REAL LUXURY GRAND ORIENT TICKET
          ========================================================================== -->
     <div id="ticket-screen">
-        <div class="ticket-screen-title">
-        </div>
-
         <div class="ticket-wrapper" id="ticket-btn" onclick="tearTicketAndEnter()">
             <div class="luxury-ticket">
                 
@@ -860,54 +960,68 @@
                     <div class="ticket-inner-border"></div>
 
                     <div class="ticket-header-group">
-                        <span class="ticket-sub">MULTIVERSE CIRCULATION RAILWAY</span>
-                        <span class="ticket-class">Suite Room</span>
+                        <div class="ticket-brand">
+                            <span>SPECIAL CLAUSE DESIGN WORLD CIRCULAR EXPRESS</span>
+                        </div>
+                        <span class="ticket-class">Suit Room</span>
                     </div>
 
-                    <div class="ticket-main-title">TICKET</div>
+                    <div class="ticket-body-center">
+                        <div class="ticket-main-title">TICKET</div>
+                        <div class="ticket-serial-box">
+                            <div class="ticket-serial-label">Ticket Number</div>
+                            <div class="ticket-serial-no">No.XXXX</div>
+                        </div>
+                    </div>
 
                     <div class="ticket-route">
                         <div class="station-box">
-                            <span class="station-label">Departure Station</span>
-                            <span class="station-name"><i class="fa-solid fa-train"></i> 황혼</span>
+                            <span class="station-label">Departure</span>
+                            <span class="station-name"><i class="fa-solid fa-location-dot"></i> 황혼</span>
                         </div>
-                        <i class="fa-solid fa-arrows-left-right fa-1x"></i>
-                        <div class="station-box">
-                            <span class="station-label">Last Station</span>
-                            <span class="station-name"><i class="fa-solid fa-train"></i> 죽음</span>
+                        <div class="route-path">
+                            <i class="fa-solid fa-train-subway"></i>
+                            <div class="route-line"></div>
+                        </div>
+                        <div class="station-box right">
+                            <span class="station-label">Destination</span>
+                            <span class="station-name"><i class="fa-solid fa-location-dot"></i> 죽음</span>
                         </div>
                     </div>
 
                     <div class="ticket-footer">
-                        <div>
-                            <span>ISSUED BY: ▬ STATION TICKET BOOTH</span><br>
-                            <span>DATE: ▬▬/▬/▬</span>
+                        <div class="ticket-info-grid">
+                            <div class="info-item">
+                                <strong>PASSENGER</strong>
+                                <span>▬ / ▬ / ▬</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>ISSUED BY</strong>
+                                <span>▬ STATION BOOTH</span>
+                            </div>
                         </div>
                         <div class="ticket-seal">
-                            <p>🚂</p>
+                            <i class="fa-solid fa-train"></i>
                         </div>
                     </div>
                 </div>
 
-                <!-- Perforation Notch Line -->
+                <!-- Perforation Line -->
                 <div class="perforation-notch-top"></div>
                 <div class="perforation-line"></div>
                 <div class="perforation-notch-bottom"></div>
 
                 <!-- Right Tearable Passenger Stub -->
                 <div class="ticket-stub" id="ticket-stub">
-                    <div class="stub-stamp-banner">PASSENGER CONTROL</div>
-                    
-                    <div class="ticket-stub-header">BOARDING PASS</div>
-                    
+                    <div class="stub-stamp-banner">TICKET STUB</div>
                     <div class="ticket-stub-body">
-                        <strong>특약지정 세계순환열차</strong><br>
-                        승차 검인용 티켓 스텁<br>
-                        <small style="color: rgba(243, 229, 171, 0.6); display:inline-block; margin-top:4px;">VALID IN ALL REALMS</small>
+			<h3>ORBIS</h3>
+			<h3>PASS</h3>
+			<p>Have a pleasant journey</p>
                     </div>
 
                     <div class="ticket-stub-footer">
-                        <div class="ticket-number">NO. 0001-ORBIS</div>
+                        <div class="stub-barcode">|||| | ||||| ||</div>
                     </div>
                 </div>
 
@@ -915,7 +1029,7 @@
         </div>
 
         <div class="click-hint">
-            <i class="fa-solid fa-scissors"></i> 승차권을 클릭하여 절취선을 뜯고 탑승하십시오
+            <i class="fa-solid fa-scissors"></i> 승차권을 제출하고 열차에 탑승하십시오
         </div>
     </div>
 
@@ -1406,38 +1520,47 @@
 
     </div>
 
+    <!-- ==========================================================================
+         JAVASCRIPT (TEAR & TRANSITION ANIMATIONS)
+         ========================================================================== -->
     <script>
-        // Web Audio API for Paper Tear Sound Effect
-        function playTearSound() {
+        // Web Audio API: '드드득' 종이 끊어지는 연속 절취음
+        function playStutterTearSound() {
             try {
                 const AudioCtx = window.AudioContext || window.webkitAudioContext;
                 if (!AudioCtx) return;
                 const ctx = new AudioCtx();
 
-                const bufferSize = ctx.sampleRate * 0.35;
-                const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-                const data = buffer.getChannelData(0);
-                for (let i = 0; i < bufferSize; i++) {
-                    data[i] = Math.random() * 2 - 1;
-                }
+                // 5단계의 아주 짧은 노이즈 버스트로 '드-드-득' 소리 재현
+                const timestamps = [0, 0.12, 0.25, 0.40, 0.55];
+                timestamps.forEach((t, i) => {
+                    setTimeout(() => {
+                        const bufferSize = ctx.sampleRate * 0.07;
+                        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                        const data = buffer.getChannelData(0);
+                        for (let j = 0; j < bufferSize; j++) {
+                            data[j] = (Math.random() * 2 - 1) * (1 - j / bufferSize);
+                        }
 
-                const noise = ctx.createBufferSource();
-                noise.buffer = buffer;
+                        const noise = ctx.createBufferSource();
+                        noise.buffer = buffer;
 
-                const filter = ctx.createBiquadFilter();
-                filter.type = 'bandpass';
-                filter.frequency.value = 1200;
-                filter.Q.value = 1.5;
+                        const filter = ctx.createBiquadFilter();
+                        filter.type = 'bandpass';
+                        filter.frequency.value = 900 + (i * 220);
+                        filter.Q.value = 2.5;
 
-                const gain = ctx.createGain();
-                gain.gain.setValueAtTime(0.8, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+                        const gain = ctx.createGain();
+                        gain.gain.setValueAtTime(0.7, ctx.currentTime);
+                        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.06);
 
-                noise.connect(filter);
-                filter.connect(gain);
-                gain.connect(ctx.destination);
+                        noise.connect(filter);
+                        filter.connect(gain);
+                        gain.connect(ctx.destination);
 
-                noise.start();
+                        noise.start();
+                    }, t * 1000);
+                });
             } catch (e) {
                 console.log('Audio Context Error:', e);
             }
@@ -1449,18 +1572,26 @@
             if (isTorn) return;
             isTorn = true;
 
-            playTearSound();
+            // 효과음 재생
+            //playStutterTearSound();
 
             const stub = document.getElementById('ticket-stub');
             const ticketScreen = document.getElementById('ticket-screen');
             const handbook = document.getElementById('handbook-container');
 
-            stub.classList.add('torn-off');
+            // 1단계: 드드득 뜯기기 (stuttering tear animation)
+            stub.classList.add('tearing');
 
+            // 2단계: 조금 있다가 스텁이 스르륵 사라짐 (fade out)
+            setTimeout(() => {
+                stub.classList.add('fade-out');
+            }, 200);
+
+            // 3단계: 스텁이 사라진 뒤 티켓 스크린 전체가 옆으로 퇴장하며 본문 진입
             setTimeout(() => {
                 ticketScreen.classList.add('slide-out');
                 handbook.classList.add('visible');
-            }, 600);
+            }, 500);
         }
 
         function switchChapter(chapterId, btnEl) {
@@ -1487,8 +1618,11 @@
 
             setTimeout(() => {
                 isTorn = false;
-                if (stub) stub.classList.remove('torn-off');
-            }, 300);
+                if (stub) {
+                    stub.classList.remove('tearing');
+                    stub.classList.remove('fade-out');
+                }
+            }, 400);
         }
     </script>
 </body>
