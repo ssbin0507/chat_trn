@@ -754,6 +754,15 @@
             color: var(--text-dark);
         }
 
+	.card-text h3 {
+	    font-size: 1.2rem;
+	    color: var(--wine-dark);
+	    margin-bottom: 15px;
+	    font-weight: bold;
+	    border-bottom: 1px solid var(--brass-gold);
+	    padding-bottom: 5px;
+	}
+
         .bullet-list {
             list-style: none;
             margin-top: 8px;
@@ -902,22 +911,6 @@
             font-size: 0.82rem;
         }
 
-        .reexamine-btn {
-            background: transparent;
-            border: 1px solid var(--brass-gold);
-            color: var(--brass-light);
-            padding: 6px 14px;
-            cursor: pointer;
-            font-family: 'Noto Serif KR', serif;
-            font-size: 0.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .reexamine-btn:hover {
-            background: var(--brass-gold);
-            color: var(--wine-dark);
-        }
-
         @media (max-width: 900px) {
             .luxury-ticket {
                 width: 92vw;
@@ -1047,7 +1040,6 @@
         <header class="handbook-header">
             <div class="header-sub">VINTAGE RAILWAY PASSENGER HANDBOOK</div>
             <h1 class="header-title">특약지정 세계순환열차 오르비스호 안내서</h1>
-            <div class="header-badge"><i class="fa-solid fa-book-bookmark"></i> 열차 승객 및 승무원 필독서</div>
         </header>
 
         <nav class="chapter-nav">
@@ -1055,7 +1047,7 @@
                 <span class="nav-num">01.</span> 오르비스호
             </button>
             <button class="nav-btn" onclick="switchChapter('c02', this)">
-                <span class="nav-num">02.</span> 세계와 역
+                <span class="nav-num">02.</span> 세계관
             </button>
             <button class="nav-btn" onclick="switchChapter('c03', this)">
                 <span class="nav-num">03.</span> 운행노선
@@ -1080,16 +1072,14 @@
             <div id="c01" class="chapter-panel active">
                 <div class="chapter-header">
                     <span class="chapter-header-num">CHAPTER 01</span>
-                    <h2 class="chapter-header-title">오르비스호 (Orbis Express) Overview</h2>
+                    <h2 class="chapter-header-title">열차에 대하여</h2>
                 </div>
 
                 <div class="vintage-card gold-accent">
-                    <div class="card-title">
-                        <i class="fa-solid fa-train-subway"></i> 열차의 정식 명칭 및 본질
-                    </div>
+                    <div class="card-title">특약지정 세계순환열차 오르비스호</div>
                     <div class="card-text">
-                        <strong>‘특약지정 세계순환열차 오르비스호’</strong>는 혼돈(Chaos)의 공허를 횡단하며 모든 세계를 연결하는 유일무이한 매개체입니다. 
-                        세계의 법칙 중 '방호벽'의 보완 법칙으로서 관리자에 의해 제작된 존재로, <strong>물리적 파괴가 불가능</strong>한 절대적인 법칙성을 지닙니다.
+                        <strong>‘특약지정 세계순환열차 오르비스호’</strong> 통칭 <strong>'오르비스'</strong>는 혼돈 속을 달리며 모든 세계를 방문하는 유일무이한 매개체입니다. 
+                        세계의 법칙 중 '방호벽'의 보완 법칙으로서 관리자에 의해 제작되었으며, 일종의 법칙이기에 <strong>물리적 파괴가 불가능</strong>합니다.
                     </div>
                 </div>
 
@@ -1099,18 +1089,20 @@
                             <i class="fa-solid fa-brain"></i> 자아와 의지
                         </div>
                         <div class="card-text">
-                            오르비스호는 스스로 사고하고 판단하는 <strong>자아와 의지</strong>를 지니고 있으나, 생명체는 아닙니다. 기관사가 은퇴할 경우, 열차가 직접 전 세계를 관측하여 자신의 본질과 공명하는 새 기관사를 직접 선발합니다.
+                            오르비스는 스스로 사고하고 판단하는 <strong>자아</strong>를 지니고 있으나, 생명체는 아닙니다. <br>기관사가 은퇴할 경우, 열차는 전 세계를 관측하여 조건에 맞는 본질을 지닌 생명체를 새 기관사로 직접 선발합니다.
                         </div>
                     </div>
 
                     <div class="vintage-card">
                         <div class="card-title">
-                            <i class="fa-solid fa-bullseye"></i> 주 임무 및 서브 임무
+                            <i class="fa-solid fa-bullseye"></i> 임무
                         </div>
                         <div class="card-text">
+                            <h3>주 임무</h3>
+			    <p>모든 세계를 순환하며 방호벽 틈새로 새어 들어간 혼돈에너지를 흡수하여 세계 보완.</p>
+
                             <ul class="bullet-list">
-                                <li><strong>주 임무:</strong> 모든 세계를 순환하며 방호벽 틈새로 새어 들어간 혼돈에너지를 흡수 및 정제.</li>
-                                <li><strong>서브 임무:</strong> 정당한 대가를 지불한 초월자를 타 세계로 이송하거나, 우연히 틈새로 흘러든 일반 생존자 구호.</li>
+                                <li><strong>서브 임무:</strong> 정당한 대가를 지불한 초월자 및 동행인을 타 세계로 이송.<br>※ 틈새를 통해 우연히 흘러들거나 일부러 접근한 초월자가 아닌 일반인 손님이 있을 수 있습니다.</li>
                             </ul>
                         </div>
                     </div>
@@ -1118,93 +1110,114 @@
 
                 <div class="vintage-card">
                     <div class="card-title">
-                        <i class="fa-solid fa-hourglass-half"></i> 열차 내 시공간 및 규율
+                        <i class="fa-solid fa-hourglass-half"></i> 열차 내 시공간
                     </div>
                     <div class="card-text">
-                        <p>열차 내부에는 독자적인 고정 시간이 존재하며, 1회 노선 운행을 기준으로 1일~7일 단위로 흐릅니다. (AM 00:00 ~ PM 11:59)</p>
+                        <p><strong>고유시간:</strong> 열차 내부에는 독자적인 고정 시간이 존재합니다. 1회 노선 운행을 기준으로 1일~10일 단위로 날짜를 측정하며, 하루당 AM 00:00 ~ PM 11:59의 시간을 제공합니다.</p>
                         <p style="margin-top: 8px;"><strong>언어 자동 번역:</strong> 열차 내에서는 탑승객이 사용하는 모든 언어가 각자의 언어로 자동 번역되어 들리므로 소통의 장벽이 존재하지 않습니다.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 02. 세계와 역 -->
+            <!-- 02. 세계관 -->
             <div id="c02" class="chapter-panel">
                 <div class="chapter-header">
                     <span class="chapter-header-num">CHAPTER 02</span>
-                    <h2 class="chapter-header-title">세계관 및 세계 구조 (Worldview & Spheres)</h2>
+                    <h2 class="chapter-header-title">세계관</h2>
                 </div>
 
-                <div class="grid-3" style="margin-bottom: 25px;">
+                <div class="grid-2" style="margin-bottom: 25px;">
                     <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-vortex"></i> 혼돈 & 혼돈에너지</div>
+                        <div class="card-title"><i class="fa-solid fa-hurricane"></i> 혼돈</div>
                         <div class="card-text">
-                            태초부터 존재한 모든 것의 시발점이자 공허. 관성적 위험 물질인 <strong>'핵'</strong>이 돌연 발생하기도 합니다.
-                        </div>
-                    </div>
-                    <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-chess-king"></i> 관리자 (Administrator)</div>
-                        <div class="card-text">
-                            세계 순환의 법칙만을 유지하는 일종의 시스템. 자아는 없으나 깊은 사고능력을 가집니다.
+                            태초부터 존재한 모든 것의 시발점이자 공허. 
+                            <ul class="bullet-list">
+                                <li><strong>혼돈에너지:</strong> 혼돈에서 발생하는 원시에너지입니다. 관리자, 열차, 기관사를 제외하면 그 누구도 다룰 수 없는 에너지로써, 그들도 사용만 가능할뿐 <strong>완벽한 통제는 불가능</strong>합니다. </li>
+                                <li><strong>핵:</strong> 혼돈에너지가 뭉쳐 돌연 발생하는 물질. 잘 성장한다면 새로운 세계가 되지만 대부분은 그저 잔재가 되어 <strong>혼돈체</strong>가 됩니다.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-ghost"></i> 혼돈체 (Chaos Entities)</div>
+                        <div class="card-title"><i class="fa-solid fa-chess-king"></i> 관리자</div>
                         <div class="card-text">
-                            핵이 변이된 잔재. 세계가 되고 싶은 본능으로 세계를 흡수하려 시도합니다. (E등급 ~ EX등급)
+                            핵이 혼돈체나 세계 외의 것으로 성장하여 발현된 세계 순환의 법칙만을 유지하는 일종의 시스템.<br>자아는 없으나 깊은 사고능력을 가집니다.
+                        </br>
+                            관리자의 대표적인 법칙은 <strong>세계 법칙</strong>으로 모든 세계는 해당 법칙 아래 관리됩니다.
                         </div>
                     </div>
                 </div>
-
-                <h3 style="color: var(--wine-dark); margin-bottom: 15px; font-family: 'Nanum Myeongjo', serif; border-bottom: 1px solid var(--brass-gold); padding-bottom: 5px;">
-                    <i class="fa-solid fa-globe"></i> 5대 원류세계 (The Five Origin Worlds)
-                </h3>
-
-                <div class="grid-2">
-                    <div class="world-card">
-                        <div class="world-code">WN-A0001</div>
-                        <div class="world-name">황혼</div>
-                        <div class="card-text">
-                            <span class="tag">신화</span><span class="tag">중세 유럽풍</span><span class="tag">인간·신족</span><br>
-                            신들이 인간을 다스리는 세계. 신력이 존재하며 초월자가 가장 많이 존재하는 원류세계의 중심.
-                        </div>
-                    </div>
-
-                    <div class="world-card">
-                        <div class="world-code">WN-A0019</div>
-                        <div class="world-name">만월</div>
-                        <div class="card-text">
-                            <span class="tag">무협</span><span class="tag">고대 중국풍</span><span class="tag">인간·영물</span><br>
-                            무공·문파·세가가 존재하며 강호의 법칙이 지배하는 세계. 초월자의 대부분이 전투계 능력을 보유.
-                        </div>
-                    </div>
-
-                    <div class="world-card">
-                        <div class="world-code">WN-A0200</div>
-                        <div class="world-name">몽환</div>
-                        <div class="card-text">
-                            <span class="tag">판타지</span><span class="tag">중세 유럽풍</span><span class="tag">마법 종족</span><br>
-                            인간, 수인, 엘프, 드워프, 드래곤 등이 함께 살아가는 마법 세계. 세대교체가 잦아 다수의 초월자가 혼재.
-                        </div>
-                    </div>
-
-                    <div class="world-card">
-                        <div class="world-code">WN-A0269</div>
-                        <div class="world-name">연무</div>
-                        <div class="card-text">
-                            <span class="tag">SF</span><span class="tag">초고도 미래</span><span class="tag">안드로이드</span><br>
-                            항성 간 이동이 보편화된 초고도 미래 SF 세계. 다수 은하에 생명체가 분포하나 초월자는 희소함.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="world-card" style="margin-top: 15px; border-color: var(--wine-light);">
-                    <div class="world-code" style="color: var(--wine-light);">WN-B0007</div>
-                    <div class="world-name" style="color: var(--wine-dark);">죽음</div>
+                <div class="vintage-card">
+                    <div class="card-title"><i class="fa-solid fa-ghost"></i> 혼돈체</div>
                     <div class="card-text">
-                        <span class="tag" style="background: var(--wine-dark);">현대</span><span class="tag" style="background: var(--wine-dark);">괴담 관리국</span>
-                        과거 내분으로 방호벽이 손상되어 침투혼돈체와 괴담이 자주 발생하는 위험 세계. 초월자는 없으나 틈새를 통해 일반인 탑승객이 가장 자주 유입되는 정류장.
+                        핵이 변이된 잔재. 세계가 되고 싶은 본능으로 세계를 흡수하려 시도합니다. (E등급 ~ EX등급)
                     </div>
                 </div>
+
+                <div class="vintage-card">
+                    <div class="card-title"><i class="fa-solid fa-globe"></i> 세계</div>
+                    <div class="card-text">
+                            핵이 혼돈에너지 흡수해서 잘 성장하면 세계가 됩니다. <br>각 세계마다 다양한 우주, 은하, 생태계 등이 존재하며 여러이유로 멸망 또한 가능해 멸망 후에는 파괴되어 혼돈으로 돌아가는 순환을 유지합니다.<br>세계 속에서 생명체가 탄생한 은하는 <strong>단 하나</strong>이며 그 은하가 <strong>세계의 중심/기준</strong>이 됩니다. 간혹 생명체가 여러 은하에 있는 세계가 존재하지만 그것은 중심 은하에서 탄생한 생명이 퍼져나가 번영하게 되어 그렇게 보이는 것 뿐입니다.
+                    </div>
+		    <br>
+                    <div class="card-text">
+			    <h3>세계법칙</h3>
+                            <ul class="bullet-list">
+                                <li><strong>고립:</strong> 세계에서 다른 세계로는 이동이 불가합니다. </li>
+                                <li><strong>방호벽:</strong> 각 세계에는 혼돈에너지와 혼돈체의 침입을 막아 보호하는 무형의 벽이 존재합니다. </li>
+                            </ul>
+                      </div>
+			<br>
+                        <div class="card-text">
+                		<h3>5대 원류세계</h3>
+				멸망하지 않은 세계들 중 가장 오래된 다섯세계.
+                		<div class="grid-3">
+                    		<div class="world-card">
+                        		<div class="world-code">WN-A0001</div>
+                        		<div class="world-name">황혼</div>
+                        		<div class="card-text">
+                            			<span class="tag">신화</span><span class="tag">중세 유럽풍</span><span class="tag">인간·신족</span><br>
+                            				신들이 인간을 다스리는 세계. 신력이 존재하며 초월자가 가장 많이 존재.
+                        		</div>
+                    		</div>
+
+                    		<div class="world-card">
+                        		<div class="world-code">WN-A0019</div>
+                        		<div class="world-name">만월</div>
+                        		<div class="card-text">
+                            			<span class="tag">무협</span><span class="tag">고대 중국풍</span><span class="tag">인간</span><br>
+                            				무공·문파·세가가 존재하며 강호의 법칙이 지배하는 세계. 초월자의 대부분이 전투계 능력을 보유.
+                        		</div>
+                    		</div>
+
+                    		<div class="world-card">
+                        		<div class="world-code">WN-A0200</div>
+                        		<div class="world-name">몽환</div>
+                        		<div class="card-text">
+                            			<span class="tag">판타지</span><span class="tag">중세 유럽풍</span><span class="tag">마법 종족</span><br>
+                            				인간, 수인, 엘프, 드워프, 드래곤 등이 함께 살아가는 마법 세계. 세대교체가 잦아 다수의 초월자가 혼재.
+                        		</div>
+                    		</div>
+
+                    		<div class="world-card">
+                        		<div class="world-code">WN-A0269</div>
+                        		<div class="world-name">연무</div>
+                        		<div class="card-text">
+                            			<span class="tag">SF</span><span class="tag">초고도 미래</span><span class="tag">안드로이드</span><br>
+                            				항성 간 이동이 보편화될정도로 초고도의 기술발전이 이루어진 세계. 다수 은하에 생명체가 분포하나 초월자는 희소함.
+                        		</div>
+                    		</div>
+
+                		<div class="world-card">
+                    			<div class="world-code">WN-B0007</div>
+                    			<div class="world-name">죽음</div>
+                    			<div class="card-text">
+                        			<span class="tag">괴담</span><span class="tag">괴담 관리국</span><span class="tag">현대</span><span class="tag">인간</span><br>
+                        				먼 과거의 내분으로 방호벽이 손상되어 침투혼돈체가 자주 발생하는 세계. 초월자는 없으나 틈새를 통해 일반인 탑승객이 가장 자주 유입됨.
+					</div>
+                        	</div>
+                    	</div>
+                  </div>
+               </div>
             </div>
 
             <!-- 03. 운행 노선 -->
@@ -1215,7 +1228,7 @@
                 </div>
 
                 <div class="vintage-card gold-accent">
-                    <div class="card-title"><i class="fa-solid fa-route"></i> 정기 운행 노선 (4대 주요 노선)</div>
+                    <div class="card-title"><i class="fa-solid fa-route"></i> 정기 운행 노선</div>
                     <table class="vintage-table">
                         <thead>
                             <tr>
@@ -1513,9 +1526,6 @@
             <div>
                 <span>ORBIS EXPRESS MULTIVERSE CIRCULATION RAILWAY</span>
             </div>
-            <button class="reexamine-btn" onclick="reexamineTicket()">
-                <i class="fa-solid fa-ticket"></i> 승차권 다시 보기
-            </button>
         </footer>
 
     </div>
@@ -1606,23 +1616,6 @@
             if (activePanel) {
                 activePanel.classList.add('active');
             }
-        }
-
-        function reexamineTicket() {
-            const ticketScreen = document.getElementById('ticket-screen');
-            const handbook = document.getElementById('handbook-container');
-            const stub = document.getElementById('ticket-stub');
-
-            handbook.classList.remove('visible');
-            ticketScreen.classList.remove('slide-out');
-
-            setTimeout(() => {
-                isTorn = false;
-                if (stub) {
-                    stub.classList.remove('tearing');
-                    stub.classList.remove('fade-out');
-                }
-            }, 400);
         }
     </script>
 </body>
