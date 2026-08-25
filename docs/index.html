@@ -122,7 +122,7 @@
             justify-content: space-between;
             position: relative;
             border: 3px solid var(--ticket-gold);
-            border-right: 2px dashed transparent; /* 절취선을 위한 투명 테두리 적용 */
+            border-right: 2px dashed transparent;
             border-radius: 8px 0 0 8px;
             box-shadow: inset 0 0 30px rgba(0,0,0,0.95);
         }
@@ -375,7 +375,7 @@
             justify-content: space-between;
             position: relative;
             border: 3px solid var(--ticket-gold);
-            border-left: 2px dashed transparent; /* 절취선을 위한 투명 테두리 적용 */
+            border-left: 2px dashed transparent;
             border-radius: 0 8px 8px 0;
             transform-origin: left center;
             z-index: 10;
@@ -419,10 +419,10 @@
             border-radius: 4px;
             border: 2px solid rgba(223, 183, 108, 0.2);
             display: flex;
-            flex-direction: column; /* 텍스트(요소)들을 세로 방향으로 나열 */
-            justify-content: center; /* [세로 기준] 완벽한 정중앙 배치 */
-            align-items: center;     /* [가로 기준] 완벽한 정중앙 배치 */
-            text-align: center;      /* 줄바꿈 시 텍스트 자체 중앙 정렬 */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
         .ticket-stub-body h3{
@@ -740,33 +740,6 @@
             padding-bottom: 5px;
         }
 
-        .vintage-card .card-content {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .card-img {
-            width: 200px;
-            height: 200px;
-            flex-shrink: 0;
-            background-color: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--paper-border);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: fit;
-            display: block;
-        }
-
-        .card-text-container {
-            flex: 1;
-        }
-
         .bullet-list {
             list-style: none;
             margin-top: 8px;
@@ -861,9 +834,9 @@
         }
 
         /* ==========================================================================
-           3. CHAPTER 06: PASSENGER DOSSIER & MODAL STYLES (승객 명부 전용 스타일)
+           3. PASSENGER & STAFF CARD / DOSSIER MODAL STYLES
            ========================================================================== */
-        .passenger-grid {
+        .passenger-grid, .staff-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 22px;
@@ -871,8 +844,6 @@
 
         .passenger-card {
             background: var(--ticket-gold-light);
-            border: 2px solid var(--brass-dark);
-            border-radius: 4px;
             padding: 20px;
             cursor: pointer;
             position: relative;
@@ -907,6 +878,134 @@
             opacity: 0.8;
         }
 
+        /* --------------------------------------------------------------------------
+           VINTAGE ORIENT EXPRESS STAFF ID CARD STYLING (빈티지 호화열차 사원증 스타일)
+           -------------------------------------------------------------------------- */
+        .staff-card {
+            background: #23080c;
+            background-image: 
+                radial-gradient(circle at 50% 0%, #4a0d16 0%, #170407 100%),
+                repeating-linear-gradient(45deg, rgba(197, 160, 89, 0.05) 0px, rgba(197, 160, 89, 0.05) 1px, transparent 1px, transparent 6px);
+            padding: 24px 18px 18px 18px;
+            cursor: pointer;
+            position: relative;
+            border: 2px solid var(--brass-gold);
+            border-radius: 6px;
+            box-shadow: 
+                0 8px 20px rgba(0,0,0,0.4), 
+                inset 0 0 0 2px #3b0a11,
+                inset 0 0 15px rgba(0,0,0,0.8);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* 카드 내부 정교한 금박 액자선 */
+        .staff-card::before {
+            content: '';
+            position: absolute;
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border: 1px solid var(--brass-dark);
+            border-radius: 3px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .staff-card::after {
+            content: '';
+            position: absolute;
+            top: 9px; left: 9px; right: 9px; bottom: 9px;
+            border: 1px dashed rgba(226, 195, 128, 0.3);
+            border-radius: 2px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 타공 홀 (사원증 목걸이 체인 고리) */
+        .staff-card .staff-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 14px;
+            background: #12080a;
+            border: 2px solid var(--brass-gold);
+            border-radius: 50%;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.8);
+            z-index: 5;
+        }
+
+        /* 사진 프레임: 빈티지 앤티크 프레임 */
+        .staff-photo-frame {
+            width: 105px;
+            height: 125px;
+            background: radial-gradient(circle, #2c1216 0%, #120507 100%);
+            border: 2px solid var(--brass-gold);
+            margin-top: 14px;
+            margin-bottom: 14px;
+            box-shadow: 
+                0 4px 10px rgba(0,0,0,0.7), 
+                inset 0 0 10px rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            border-radius: 3px;
+        }
+
+        /* 사진 네 모퉁이 금속 리벳(못) 장식 */
+        .staff-photo-frame::after {
+            content: '';
+            position: absolute;
+            top: 2px; left: 2px; right: 2px; bottom: 2px;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            pointer-events: none;
+        }
+
+        .staff-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(30%) contrast(110%);
+        }
+
+        .staff-photo-frame i {
+            font-size: 3.2rem;
+            color: var(--brass-light);
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
+            transition: transform 0.3s ease;
+        }
+
+        /* 직원 이름 및 직책 타이포그래피 */
+        .staff-brief-name {
+            font-family: 'Nanum Myeongjo', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--brass-light);
+            margin-bottom: 3px;
+            letter-spacing: 1px;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .staff-brief-title {
+            font-family: 'Cinzel', 'Noto Serif KR', serif;
+            font-size: 0.7rem;
+            color: #d1bd9b;
+            font-weight: 600;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+
         .passenger-photo-frame {
             width: 100px;
             height: 120px;
@@ -932,7 +1031,7 @@
         .passenger-photo-frame i {
             font-size: 3rem;
             color: var(--brass-dark);
-            opacity: 0.5;
+            opacity: 0.7;
         }
 
         .passenger-brief-name {
@@ -987,6 +1086,7 @@
             pointer-events: auto;
         }
 
+        /* 승객 기본 팝업창 스타일 */
         .passenger-dossier-modal {
             width: 620px;
             max-width: 92vw;
@@ -1001,6 +1101,112 @@
             position: relative;
             transform: scale(0.9);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* --------------------------------------------------------------------------
+           STAFF MODAL DESIGN (직원 팝업창 전용 빈티지 호화열차 사원증 스타일)
+           -------------------------------------------------------------------------- */
+        .passenger-dossier-modal.staff-modal-theme {
+            background: #23080c;
+            background-image: 
+                radial-gradient(circle at 50% 0%, #4a0d16 0%, #170407 100%),
+                repeating-linear-gradient(45deg, rgba(197, 160, 89, 0.05) 0px, rgba(197, 160, 89, 0.05) 1px, transparent 1px, transparent 6px);
+            border: 3px double var(--brass-gold);
+            box-shadow: 
+                0 0 0 8px #170407, 
+                0 0 0 10px var(--brass-gold),
+                0 30px 70px rgba(0,0,0,0.95),
+                inset 0 0 25px rgba(0,0,0,0.8);
+            color: var(--brass-light);
+        }
+
+        .passenger-dossier-modal.staff-modal-theme::before {
+            content: '';
+            position: absolute;
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
+            border: 1px solid var(--brass-dark);
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme::after {
+            content: '';
+            position: absolute;
+            top: 12px; left: 12px; right: 12px; bottom: 12px;
+            border: 1px dashed rgba(226, 195, 128, 0.3);
+            border-radius: 3px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .modal-close-btn {
+            color: var(--brass-light);
+            z-index: 10;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .modal-close-btn:hover {
+            color: #ffffff;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-header {
+            border-bottom: 2px solid var(--brass-gold);
+            z-index: 2;
+            position: relative;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-title-group h2 {
+            color: var(--brass-light);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-title-group span {
+            color: var(--ticket-gold);
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-body {
+            position: relative;
+            z-index: 2;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-photo-container {
+            background: radial-gradient(circle, #2c1216 0%, #120507 100%);
+            border: 2px solid var(--brass-gold);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.8), inset 0 0 12px rgba(0,0,0,0.9);
+            position: relative;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-photo-container::after {
+            content: '';
+            position: absolute;
+            top: 2px; left: 2px; right: 2px; bottom: 2px;
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            pointer-events: none;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-photo-container .photo-wrapper {
+            background: transparent;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-photo-container i {
+            color: var(--brass-light);
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
+            opacity: 1;
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-info-table th {
+            color: var(--brass-light);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-info-table td {
+            color: #e6dac3;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .passenger-dossier-modal.staff-modal-theme .dossier-info-table th, 
+        .passenger-dossier-modal.staff-modal-theme .dossier-info-table td {
+            border-bottom: 1px dashed rgba(197, 160, 89, 0.3);
         }
 
         .modal-overlay.active .passenger-dossier-modal {
@@ -1083,7 +1289,7 @@
         .dossier-photo-container i {
             font-size: 4rem;
             color: var(--brass-gold);
-            opacity: 0.6;
+            opacity: 0.8;
         }
 
         .dossier-info-table {
@@ -1304,26 +1510,6 @@
                 margin-bottom: 15px;
             }
 
-            .vintage-card .card-content,
-            .vintage-card .card-content.reverse {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .card-img {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 1 / 1;
-            }
-
-            .card-title {
-                font-size: 1.1rem;
-            }
-
-            .card-text {
-                font-size: 0.88rem;
-            }
-
             .vintage-table {
                 display: block;
                 width: 100%;
@@ -1337,26 +1523,26 @@
                 white-space: nowrap;
             }
 
-            .passenger-grid {
+            .passenger-grid, .staff-grid {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
                 gap: 12px;
             }
 
-            .passenger-card {
+            .passenger-card, .staff-card {
                 padding: 12px 8px;
             }
 
-            .passenger-photo-frame {
+            .passenger-photo-frame, .staff-photo-frame {
                 width: 75px;
                 height: 90px;
                 margin-bottom: 10px;
             }
 
-            .passenger-brief-name {
+            .passenger-brief-name, .staff-brief-name {
                 font-size: 1rem;
             }
 
-            .passenger-brief-title {
+            .passenger-brief-title, .staff-brief-title {
                 font-size: 0.75rem;
             }
 
@@ -1577,7 +1763,7 @@
                         </div>
                     </div>
                     <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-chess-king"></i> 관리자</div>
+                        <div class="card-title"><i class="fa-solid fa-eye"></i> 관리자</div>
                         <div class="card-text">
                             핵이 혼돈체나 세계 외의 것으로 성장하여 발현된 세계 순환의 법칙만을 유지하는 일종의 시스템.<br>자아는 없으나 깊은 사고능력을 가집니다.
                         </br>
@@ -1807,53 +1993,46 @@
                     </div>
                 </div>
 
-                <h3 style="color: var(--wine-dark); margin-bottom: 15px; font-family: 'Nanum Myeongjo', serif;">
-                    <i class="fa-solid fa-users-gear"></i> 열차 직원
-                </h3>
+               <div class="card-title" style="font-size: 1.4rem; margin-top: 20px;"><i class="fa-solid fa-users-gear"></i> 직원</div>
+                <div class="staff-grid">
+                    <!-- 직원 1: 승무원 -->
+                    <div class="staff-card" onclick="openStaffModal('승무원')">
+                        <div class="staff-photo-frame">
+                            <i class="fa-solid fa-paw"></i>
+                        </div>
+                        <div class="staff-brief-title">Staff</div>
+                        <div class="staff-brief-name">승무원</div>
+                    </div>
 
-                 <div class="vintage-card">
-                     <div class="card-title"><i class="fa-solid fa-paw"></i> 승무원</div>
-		     <div class="card-content">
-                        <div class="card-img">
+                    <!-- 직원 2: 요리사 -->
+                    <div class="staff-card" onclick="openStaffModal('요리사')">
+                        <div class="staff-photo-frame">
+                            <i class="fa-solid fa-fire-burner"></i>
                         </div>
-                        <div class="card-text-container card-text">
-                             동글말랑하고 작은 귀여운 인외 존재들. 다수가 상주하며 객실 서비스, 청소, 보좌를 담당합니다. 긴급 상황 시 경호 전투모드로 전환됩니다.
-                        </div>
-                     </div>
-                 </div>
+                        <div class="staff-brief-title">Staff</div>
+                        <div class="staff-brief-name">요리사</div>
+                    </div>
 
-                 <div class="vintage-card">
-                     <div class="card-title"><i class="fa-solid fa-fire-burner"></i> 요리사</div>
-		     <div class="card-content">
-                        <div class="card-img">
+                    <!-- 직원 3: 바텐더 -->
+                    <div class="staff-card" onclick="openStaffModal('바텐더')">
+                        <div class="staff-photo-frame">
+                            <i class="fa-solid fa-martini-glass-citrus"></i>
                         </div>
-                        <div class="card-text-container card-text">
-                             <strong>불꽃 오브젝트 헤드</strong>를 가진 단 1명의 전담 셰프. 식당칸을 전담하며 전 세계 모든 문명의 레시피를 완벽하게 구현합니다.
-                         </div>
-                      </div>
-                 </div>
-
-                 <div class="vintage-card">
-                     <div class="card-title"><i class="fa-solid fa-martini-glass-citrus"></i> 바텐더</div>
-		     <div class="card-content">
-                        <div class="card-img">
-                        </div>
-                        <div class="card-text-container card-text">
-                         <strong>와인잔 오브젝트 헤드</strong>를 가진 1명의 바텐더. 바 칸을 담당하며 손님의 기분과 요청에 맞춘 맞춤형 주류를 제조합니다.
-                         </div>
-                     </div>
+                        <div class="staff-brief-title">Staff</div>
+                        <div class="staff-brief-name">바텐더</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- 06. 주요 승객 (승객 명부 카드로 변경) -->
+            <!-- 06. 주요 승객 -->
             <div id="c06" class="chapter-panel">
                 <div class="chapter-header">
                     <span class="chapter-header-num">CHAPTER 06</span>
                     <h2 class="chapter-header-title">주요 승객 명부</h2>
                 </div>
 
-                <div class="passenger-grid">
-                    
+               <div class="card-title" style="font-size: 1.4rem;"><i class="fa-solid fa-crown"></i> 초월자</div>
+               <div class="passenger-grid">
                     <!-- 승객 1: 아르미스 -->
                     <div class="passenger-card" onclick="openPassengerModal('아르미스')">
                         <div class="passenger-stamp">PASSENGER</div>
@@ -1919,7 +2098,10 @@
                         <div class="passenger-brief-title">아카식 레코드</div>
                         <div class="passenger-click-tag"><i class="fa-solid fa-address-card"></i> 승객 명부 열람</div>
                     </div>
+                </div>
 
+               <div class="card-title" style="font-size: 1.4rem; margin-top: 20px;"><i class="fa-solid fa-user"></i> 일반인</div>
+                <div class="passenger-grid">
                     <!-- 승객 7: 이현 -->
                     <div class="passenger-card" onclick="openPassengerModal('이현')">
                         <div class="passenger-stamp">PASSENGER</div>
@@ -1998,15 +2180,15 @@
     </div>
 
     <!-- ==========================================================================
-         POPUP MODAL: PASSENGER DOSSIER (승객 명부 상세 정보 팝업창)
+         POPUP MODAL: DOSSIER (승객 및 직원 정보 팝업창)
          ========================================================================== -->
     <div class="modal-overlay" id="passengerModal" onclick="closePassengerModal(event)">
-        <div class="passenger-dossier-modal" onclick="event.stopPropagation()">
+        <div class="passenger-dossier-modal" id="modalWindow" onclick="event.stopPropagation()">
             <button class="modal-close-btn" onclick="closePassengerModal()"><i class="fa-solid fa-xmark"></i></button>
             <div class="dossier-header">
                 <div class="dossier-title-group">
-                    <h2 id="modal-name">승객 이름</h2>
-                    <span>PASSENGER REGISTER FILE</span>
+                    <h2 id="modal-name">이름 / 직위</h2>
+                    <span id="modal-subtitle">REGISTER FILE</span>
                 </div>
             </div>
             <div class="dossier-body">
@@ -2016,21 +2198,25 @@
                     </div>
                 </div>
                 <table class="dossier-info-table">
-                    <tr>
+                    <tr id="row-origin">
                         <th>출신지</th>
                         <td id="modal-info-origin">-</td>
                     </tr>
-                    <tr>
+                    <tr id="row-species">
                         <th>종족</th>
                         <td id="modal-info-species">-</td>
                     </tr>
-                    <tr>
-                        <th>칭호</th>
+                    <tr id="row-nickname">
+                        <th id="label-nickname">칭호</th>
                         <td id="modal-info-nickname">-</td>
                     </tr>
-                    <tr>
+                    <tr id="row-personality">
                         <th>성격</th>
                         <td id="modal-info-personality">-</td>
+                    </tr>
+                    <tr id="row-desc" style="display: none;">
+                        <th>상세설명</th>
+                        <td id="modal-info-desc">-</td>
                     </tr>
                 </table>
             </div>
@@ -2038,13 +2224,13 @@
     </div>
 
     <!-- ==========================================================================
-         JAVASCRIPT (TEAR, TRANSITION & PASSENGER MODAL DATA)
+         JAVASCRIPT
          ========================================================================== -->
     <script>
-        /* 승객 명부 데이터 세트 (이름, 사진, 출신지, 종족, 별명, 성격) */
+        /* 승객 데이터 세트 */
         const passengerData = {
             '아르미스': {
-		name: '아르미스',
+                name: '아르미스',
                 photo: '<i class="fa-solid fa-wind"></i>',
                 origin: 'WN-A0001 (황혼)',
                 species: '신족',
@@ -2052,7 +2238,7 @@
                 personality: 'ENTP+7w8.'
             },
             '메르필리아': {
-		name: '메르필리아',
+                name: '메르필리아',
                 photo: '<i class="fa-solid fa-gem"></i>',
                 origin: 'WN-A0001 (황혼)',
                 species: '신족',
@@ -2060,7 +2246,7 @@
                 personality: 'ENFJ+2w3.'
             },
             '묵휘': {
-		name: '묵휘',
+                name: '묵휘',
                 photo: '<i class="fa-solid fa-shield-halved"></i>',
                 origin: 'WN-A0019 (만월)',
                 species: '인간',
@@ -2068,7 +2254,7 @@
                 personality: 'ISTP+9w8.'
             },
             '로샨': {
-		name: '로샨',
+                name: '로샨',
                 photo: '<i class="fa-solid fa-dragon"></i>',
                 origin: 'WN-A0200 (몽환)',
                 species: '드래곤',
@@ -2076,7 +2262,7 @@
                 personality: 'ESTP+8w7.'
             },
             '이오': {
-		name: '이오',
+                name: '이오',
                 photo: '<i class="fa-solid fa-atom"></i>',
                 origin: 'WN-A0269 (연무)',
                 species: '기체생명체',
@@ -2084,7 +2270,7 @@
                 personality: 'ENFP+7w6.'
             },
             'Ω (오메가)': {
-		name: 'Ω (오메가)',
+                name: 'Ω (오메가)',
                 photo: '<i class="fa-solid fa-robot"></i>',
                 origin: 'WN-A0269 (연무)',
                 species: '안드로이드',
@@ -2092,7 +2278,7 @@
                 personality: 'INTP+5w6.'
             },
             '이현': {
-		name: '이현',
+                name: '이현',
                 photo: '<i class="fa-solid fa-user-secret"></i>',
                 origin: 'WN-B0007 (죽음)',
                 species: '인간',
@@ -2100,7 +2286,7 @@
                 personality: 'ENTP+6w7.'
             },
             '한여름': {
-		name: '한여름',
+                name: '한여름',
                 photo: '<i class="fa-solid fa-id-badge"></i>',
                 origin: 'WN-B0007 (죽음)',
                 species: '인간',
@@ -2109,24 +2295,81 @@
             }
         };
 
+        /* 열차 직원 데이터 세트 */
+        const staffData = {
+            '승무원': {
+                name: '승무원 (Crew)',
+                photo: '<i class="fa-solid fa-paw"></i>',
+                position: '객실 서비스 및 경호 승무원',
+                species: '동글말랑한 소형 인외 생명체 (다수)',
+                personality: '친절하고 충성심이 높으며 헌신적임. 비상상황 시 단호하고 호전적인 경호 태세로 전환됨.',
+                desc: '객실 청소, 서빙, 보좌를 담당하며 긴급 상황 발생 시 강력한 전투 모드로 전환됩니다.'
+            },
+            '요리사': {
+                name: '요리사 (Chef)',
+                photo: '<i class="fa-solid fa-fire-burner"></i>',
+                position: '식당칸 전담 수석 셰프',
+                species: '불꽃 오브젝트 헤드 (단 1명)',
+                personality: '열정적이고 자부심이 강하며 미식 탐구열이 높음. 손님이 요리를 남기는 것을 매우 싫어함.',
+                desc: '식당칸을 전담하며 전 세계 모든 문명의 미식 및 레시피를 완벽하게 구현하여 제공합니다.'
+            },
+            '바텐더': {
+                name: '바텐더 (Bartender)',
+                photo: '<i class="fa-solid fa-martini-glass-citrus"></i>',
+                position: '바 칸 전담 바텐더',
+                species: '와인잔 오브젝트 헤드 (단 1명)',
+                personality: '차분하고 정중하며 뛰어난 경청가. 손님의 마음을 편안하게 만드는 우아한 분위기 조성.',
+                desc: '바 칸을 담당하며 손님의 기분과 요청에 맞춘 맞춤형 시그니처 주류 및 음료를 조주합니다.'
+            }
+        };
+
         /* 승객 팝업창 모달 열기 */
         function openPassengerModal(name) {
             const data = passengerData[name];
             if (!data) return;
 
+            const modalWin = document.getElementById('modalWindow');
+            modalWin.classList.remove('staff-modal-theme');
+
             document.getElementById('modal-name').innerText = data.name;
+            document.getElementById('modal-subtitle').innerText = 'PASSENGER REGISTER FILE';
             document.getElementById('modal-info-origin').innerText = data.origin;
             document.getElementById('modal-info-species').innerText = data.species;
+            document.getElementById('label-nickname').innerText = '칭호';
             document.getElementById('modal-info-nickname').innerText = data.nickname;
             document.getElementById('modal-info-personality').innerText = data.personality;
 
-            // 사진 영역 아이콘 또는 이미지 세팅
-            document.getElementById('modal-photo').innerHTML = data.photo;
+            document.getElementById('row-origin').style.display = 'table-row';
+            document.getElementById('row-desc').style.display = 'none';
 
+            document.getElementById('modal-photo').innerHTML = data.photo;
             document.getElementById('passengerModal').classList.add('active');
         }
 
-        /* 승객 팝업창 모달 닫기 */
+        /* 직원 팝업창 모달 열기 (사원증 테마 적용) */
+        function openStaffModal(title) {
+            const data = staffData[title];
+            if (!data) return;
+
+            const modalWin = document.getElementById('modalWindow');
+            modalWin.classList.add('staff-modal-theme');
+
+            document.getElementById('modal-name').innerText = data.name;
+            document.getElementById('modal-subtitle').innerText = 'STAFF OFFICIAL FILE';
+            document.getElementById('label-nickname').innerText = '직위';
+            document.getElementById('modal-info-nickname').innerText = data.position;
+            document.getElementById('modal-info-species').innerText = data.species;
+            document.getElementById('modal-info-personality').innerText = data.personality;
+            document.getElementById('modal-info-desc').innerText = data.desc;
+
+            document.getElementById('row-origin').style.display = 'none';
+            document.getElementById('row-desc').style.display = 'table-row';
+
+            document.getElementById('modal-photo').innerHTML = data.photo;
+            document.getElementById('passengerModal').classList.add('active');
+        }
+
+        /* 팝업창 모달 닫기 */
         function closePassengerModal(e) {
             if (e && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn') && !e.target.closest('.modal-close-btn')) {
                 return;
