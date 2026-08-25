@@ -419,21 +419,21 @@
             padding: 8px 6px;
             border-radius: 4px;
             border: 2px solid rgba(223, 183, 108, 0.2);
-	    display: flex;
-	    flex-direction: column; /* 텍스트(요소)들을 세로 방향으로 나열 */
-	    justify-content: center; /* [세로 기준] 완벽한 정중앙 배치 */
-	    align-items: center;     /* [가로 기준] 완벽한 정중앙 배치 */
-	    text-align: center;      /* 줄바꿈 시 텍스트 자체 중앙 정렬 */
+            display: flex;
+            flex-direction: column; /* 텍스트(요소)들을 세로 방향으로 나열 */
+            justify-content: center; /* [세로 기준] 완벽한 정중앙 배치 */
+            align-items: center;     /* [가로 기준] 완벽한 정중앙 배치 */
+            text-align: center;      /* 줄바꿈 시 텍스트 자체 중앙 정렬 */
         }
 
         .ticket-stub-body h3{
- 	    font-family: 'Cinzel Decorative', serif;
+            font-family: 'Cinzel Decorative', serif;
             font-size: 2rem;
             color: var(--ticket-gold-light);
         }
 
         .ticket-stub-body p{
- 	    font-family: 'Nanum Myeongjo', serif;
+            font-family: 'Nanum Myeongjo', serif;
             font-size: 0.8rem;
             color: var(--ticket-gold-light);
         }
@@ -754,14 +754,46 @@
             color: var(--text-dark);
         }
 
-	.card-text h3 {
-	    font-size: 1.2rem;
-	    color: var(--wine-dark);
-	    margin-bottom: 15px;
-	    font-weight: bold;
-	    border-bottom: 1px solid var(--brass-gold);
-	    padding-bottom: 5px;
-	}
+        .card-text h3 {
+            font-size: 1.2rem;
+            color: var(--wine-dark);
+            margin-bottom: 15px;
+            font-weight: bold;
+            border-bottom: 1px solid var(--brass-gold);
+            padding-bottom: 5px;
+        }
+
+        .vintage-card .card-content {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        /* Reverse layout for right-aligned image */
+        .vintage-card .card-content.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .card-img {
+            width: 200px;          /* 이미지 고정 너비 설정 */
+            height: 200px;         /* 이미지 고정 높이 설정 */
+            flex-shrink: 0;        /* 텍스트 크기에 밀리지 않도록 고정 */
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--paper-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: fit;
+            display: block;
+        }
+
+        .card-text-container {
+            flex: 1;               /* 남은 공간을 텍스트가 모두 차지 */
+        }
 
         .bullet-list {
             list-style: none;
@@ -911,6 +943,9 @@
             font-size: 0.82rem;
         }
 
+        /* ==========================================================================
+           3. RESPONSIVE MOBILE OPTIMIZATION (@media)
+           ========================================================================== */
         @media (max-width: 900px) {
             .luxury-ticket {
                 width: 92vw;
@@ -937,6 +972,206 @@
                 padding: 25px;
             }
         }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px 5px;
+            }
+
+            /* Ticket Screen Mobile Optimization */
+            #ticket-screen {
+                padding: 15px 10px;
+            }
+
+            .luxury-ticket {
+                width: 95vw;
+            }
+
+            .ticket-main {
+                padding: 16px 14px;
+            }
+
+            .ticket-main-title {
+                font-size: 2rem;
+            }
+
+            .ticket-brand {
+                font-size: 0.6rem;
+                letter-spacing: 1px;
+            }
+
+            .ticket-class {
+                font-size: 0.6rem;
+                padding: 2px 6px;
+            }
+
+            .ticket-route {
+                padding: 8px 10px;
+            }
+
+            .station-name {
+                font-size: 0.95rem;
+            }
+
+            .route-line {
+                width: 40px;
+            }
+
+            .ticket-seal {
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
+            }
+
+            .ticket-seal::after {
+                font-size: 0.35rem;
+                bottom: 4px;
+            }
+
+            .ticket-stub {
+                padding: 14px 12px;
+            }
+
+            .ticket-stub-body h3 {
+                font-size: 1.5rem;
+            }
+
+            .click-hint {
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
+                margin-top: 18px;
+                text-align: center;
+            }
+
+            /* Handbook Container Mobile Optimization */
+            #handbook-container {
+                max-width: 100vw;
+                min-height: auto;
+                border-width: 2px;
+                box-shadow: 
+                    0 0 0 6px var(--wine-dark),
+                    0 0 0 8px var(--brass-gold),
+                    0 15px 40px rgba(0,0,0,0.9);
+            }
+
+            header.handbook-header {
+                padding: 20px 15px 15px;
+            }
+
+            .header-sub {
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+            }
+
+            .header-title {
+                font-size: 1.4rem;
+                letter-spacing: 1px;
+            }
+
+            .corner-ornament {
+                width: 25px;
+                height: 25px;
+                border-width: 2px;
+            }
+            .corner-ornament.top-left { top: 6px; left: 6px; }
+            .corner-ornament.top-right { top: 6px; right: 6px; }
+            .corner-ornament.bottom-left { bottom: 6px; left: 6px; }
+            .corner-ornament.bottom-right { bottom: 6px; right: 6px; }
+
+            /* Mobile Horizontal Scroll Navigation */
+            nav.chapter-nav {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 0 5px;
+                scrollbar-width: none; /* Firefox */
+            }
+
+            nav.chapter-nav::-webkit-scrollbar {
+                display: none; /* Chrome, Safari, Opera */
+            }
+
+            .nav-btn {
+                padding: 12px 14px;
+                font-size: 0.85rem;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            main.handbook-body {
+                padding: 18px 12px;
+            }
+
+            .chapter-header {
+                margin-bottom: 20px;
+                gap: 8px;
+            }
+
+            .chapter-header-num {
+                font-size: 1.4rem;
+            }
+
+            .chapter-header-title {
+                font-size: 1.3rem;
+            }
+
+            .vintage-card {
+                padding: 15px 12px;
+                margin-bottom: 15px;
+            }
+
+            .vintage-card .card-content,
+            .vintage-card .card-content.reverse {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card-img {
+                width: 100%;
+                height: auto;
+		aspect-ratio: 1 / 1;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .card-text {
+                font-size: 0.88rem;
+            }
+
+            /* Responsive Vintage Table */
+            .vintage-table {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                font-size: 0.82rem;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .vintage-table th, .vintage-table td {
+                padding: 8px 10px;
+                white-space: nowrap;
+            }
+
+            .character-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .char-card {
+                padding: 15px;
+            }
+
+            footer.handbook-footer {
+                padding: 12px 15px;
+                font-size: 0.72rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 6px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1008,9 +1243,9 @@
                 <div class="ticket-stub" id="ticket-stub">
                     <div class="stub-stamp-banner">TICKET STUB</div>
                     <div class="ticket-stub-body">
-			<h3>ORBIS</h3>
-			<h3>PASS</h3>
-			<p>Have a pleasant journey</p>
+                        <h3>ORBIS</h3>
+                        <h3>PASS</h3>
+                        <p>Have a pleasant journey</p>
                     </div>
 
                     <div class="ticket-stub-footer">
@@ -1056,7 +1291,7 @@
                 <span class="nav-num">04.</span> 열차시설
             </button>
             <button class="nav-btn" onclick="switchChapter('c05', this)">
-                <span class="nav-num">05.</span> 승무원
+                <span class="nav-num">05.</span> 열차직원
             </button>
             <button class="nav-btn" onclick="switchChapter('c06', this)">
                 <span class="nav-num">06.</span> 주요승객
@@ -1098,11 +1333,9 @@
                             <i class="fa-solid fa-bullseye"></i> 임무
                         </div>
                         <div class="card-text">
-                            <h3>주 임무</h3>
-			    <p>모든 세계를 순환하며 방호벽 틈새로 새어 들어간 혼돈에너지를 흡수하여 세계 보완.</p>
-
                             <ul class="bullet-list">
-                                <li><strong>서브 임무:</strong> 정당한 대가를 지불한 초월자 및 동행인을 타 세계로 이송.<br>※ 틈새를 통해 우연히 흘러들거나 일부러 접근한 초월자가 아닌 일반인 손님이 있을 수 있습니다.</li>
+                                <li><strong>주 임무:</strong> 모든 세계를 순환하며 방호벽 틈새로 새어 들어간 혼돈에너지를 흡수하여 세계 보완.</li>
+                                <li><strong>서브 임무:</strong> 정당한 대가를 지불한 초월자 및 동행인을 타 세계로 이송.<br>※ 틈새를 통해 우연히 흘러들어오거나 일부러 접근한 일반인 손님이 있을 수 있습니다.</li>
                             </ul>
                         </div>
                     </div>
@@ -1113,7 +1346,7 @@
                         <i class="fa-solid fa-hourglass-half"></i> 열차 내 시공간
                     </div>
                     <div class="card-text">
-                        <p><strong>고유시간:</strong> 열차 내부에는 독자적인 고정 시간이 존재합니다. 1회 노선 운행을 기준으로 1일~10일 단위로 날짜를 측정하며, 하루당 AM 00:00 ~ PM 11:59의 시간을 제공합니다.</p>
+                        <p><strong>고유시간:</strong> 열차 내부에는 독자적인 고정 시간이 존재합니다. 1회 노선 운행을 기준으로 1일~12일 단위로 날짜를 측정하며, 하루당 AM 00:00 ~ PM 11:59의 시간을 제공합니다.</p>
                         <p style="margin-top: 8px;"><strong>언어 자동 번역:</strong> 열차 내에서는 탑승객이 사용하는 모든 언어가 각자의 언어로 자동 번역되어 들리므로 소통의 장벽이 존재하지 않습니다.</p>
                     </div>
                 </div>
@@ -1126,7 +1359,7 @@
                     <h2 class="chapter-header-title">세계관</h2>
                 </div>
 
-                <div class="grid-2" style="margin-bottom: 25px;">
+                <div class="grid-2">
                     <div class="vintage-card">
                         <div class="card-title"><i class="fa-solid fa-hurricane"></i> 혼돈</div>
                         <div class="card-text">
@@ -1158,64 +1391,64 @@
                     <div class="card-text">
                             핵이 혼돈에너지 흡수해서 잘 성장하면 세계가 됩니다. <br>각 세계마다 다양한 우주, 은하, 생태계 등이 존재하며 여러이유로 멸망 또한 가능해 멸망 후에는 파괴되어 혼돈으로 돌아가는 순환을 유지합니다.<br>세계 속에서 생명체가 탄생한 은하는 <strong>단 하나</strong>이며 그 은하가 <strong>세계의 중심/기준</strong>이 됩니다. 간혹 생명체가 여러 은하에 있는 세계가 존재하지만 그것은 중심 은하에서 탄생한 생명이 퍼져나가 번영하게 되어 그렇게 보이는 것 뿐입니다.
                     </div>
-		    <br>
+                    <br>
                     <div class="card-text">
-			    <h3>세계법칙</h3>
+                            <h3>세계법칙</h3>
                             <ul class="bullet-list">
                                 <li><strong>고립:</strong> 세계에서 다른 세계로는 이동이 불가합니다. </li>
                                 <li><strong>방호벽:</strong> 각 세계에는 혼돈에너지와 혼돈체의 침입을 막아 보호하는 무형의 벽이 존재합니다. </li>
                             </ul>
                       </div>
-			<br>
+                        <br>
                         <div class="card-text">
-                		<h3>5대 원류세계</h3>
-				멸망하지 않은 세계들 중 가장 오래된 다섯세계.
-                		<div class="grid-3">
-                    		<div class="world-card">
-                        		<div class="world-code">WN-A0001</div>
-                        		<div class="world-name">황혼</div>
-                        		<div class="card-text">
-                            			<span class="tag">신화</span><span class="tag">중세 유럽풍</span><span class="tag">인간·신족</span><br>
-                            				신들이 인간을 다스리는 세계. 신력이 존재하며 초월자가 가장 많이 존재.
-                        		</div>
-                    		</div>
+                        <h3>5대 원류세계</h3>
+                        멸망하지 않은 세계들 중 가장 오래된 다섯세계.
+                        <div class="grid-3">
+                            <div class="world-card">
+                                <div class="world-code">WN-A0001</div>
+                                <div class="world-name">황혼</div>
+                                <div class="card-text">
+                                        <span class="tag">신화</span><span class="tag">중세 유럽풍</span><span class="tag">인간·신족</span><br>
+                                            신들이 인간을 다스리는 세계. 신력이 존재하며 초월자가 가장 많이 존재.
+                                </div>
+                            </div>
 
-                    		<div class="world-card">
-                        		<div class="world-code">WN-A0019</div>
-                        		<div class="world-name">만월</div>
-                        		<div class="card-text">
-                            			<span class="tag">무협</span><span class="tag">고대 중국풍</span><span class="tag">인간</span><br>
-                            				무공·문파·세가가 존재하며 강호의 법칙이 지배하는 세계. 초월자의 대부분이 전투계 능력을 보유.
-                        		</div>
-                    		</div>
+                            <div class="world-card">
+                                <div class="world-code">WN-A0019</div>
+                                <div class="world-name">만월</div>
+                                <div class="card-text">
+                                        <span class="tag">무협</span><span class="tag">고대 중국풍</span><span class="tag">인간</span><br>
+                                            무공·문파·세가가 존재하며 강호의 법칙이 지배하는 세계. 초월자의 대부분이 전투계 능력을 보유.
+                                </div>
+                            </div>
 
-                    		<div class="world-card">
-                        		<div class="world-code">WN-A0200</div>
-                        		<div class="world-name">몽환</div>
-                        		<div class="card-text">
-                            			<span class="tag">판타지</span><span class="tag">중세 유럽풍</span><span class="tag">마법 종족</span><br>
-                            				인간, 수인, 엘프, 드워프, 드래곤 등이 함께 살아가는 마법 세계. 세대교체가 잦아 다수의 초월자가 혼재.
-                        		</div>
-                    		</div>
+                            <div class="world-card">
+                                <div class="world-code">WN-A0200</div>
+                                <div class="world-name">몽환</div>
+                                <div class="card-text">
+                                        <span class="tag">판타지</span><span class="tag">중세 유럽풍</span><span class="tag">마법 종족</span><br>
+                                            인간, 수인, 엘프, 드워프, 드래곤 등이 함께 살아가는 마법 세계. 세대교체가 잦아 다수의 초월자가 혼재.
+                                </div>
+                            </div>
 
-                    		<div class="world-card">
-                        		<div class="world-code">WN-A0269</div>
-                        		<div class="world-name">연무</div>
-                        		<div class="card-text">
-                            			<span class="tag">SF</span><span class="tag">초고도 미래</span><span class="tag">안드로이드</span><br>
-                            				항성 간 이동이 보편화될정도로 초고도의 기술발전이 이루어진 세계. 다수 은하에 생명체가 분포하나 초월자는 희소함.
-                        		</div>
-                    		</div>
+                            <div class="world-card">
+                                <div class="world-code">WN-A0269</div>
+                                <div class="world-name">연무</div>
+                                <div class="card-text">
+                                        <span class="tag">SF</span><span class="tag">초고도 미래</span><span class="tag">안드로이드</span><br>
+                                            항성 간 이동이 보편화될정도로 초고도의 기술발전이 이루어진 세계. 다수 은하에 생명체가 분포하나 초월자는 희소함.
+                                </div>
+                            </div>
 
-                		<div class="world-card">
-                    			<div class="world-code">WN-B0007</div>
-                    			<div class="world-name">죽음</div>
-                    			<div class="card-text">
-                        			<span class="tag">괴담</span><span class="tag">괴담 관리국</span><span class="tag">현대</span><span class="tag">인간</span><br>
-                        				먼 과거의 내분으로 방호벽이 손상되어 침투혼돈체가 자주 발생하는 세계. 초월자는 없으나 틈새를 통해 일반인 탑승객이 가장 자주 유입됨.
-					</div>
-                        	</div>
-                    	</div>
+                        <div class="world-card">
+                            <div class="world-code">WN-B0007</div>
+                            <div class="world-name">죽음</div>
+                            <div class="card-text">
+                                    <span class="tag">괴담</span><span class="tag">괴담 관리국</span><span class="tag">현대</span><span class="tag">인간</span><br>
+                                        먼 과거의 내분으로 방호벽이 손상되어 침투혼돈체가 자주 발생하는 세계. 초월자는 없으나 틈새를 통해 일반인 탑승객이 가장 자주 유입됨.
+                            </div>
+                        </div>
+                    </div>
                   </div>
                </div>
             </div>
@@ -1224,7 +1457,7 @@
             <div id="c03" class="chapter-panel">
                 <div class="chapter-header">
                     <span class="chapter-header-num">CHAPTER 03</span>
-                    <h2 class="chapter-header-title">운행 노선 및 열차 일과표 (Routes & Timetable)</h2>
+                    <h2 class="chapter-header-title">운행 노선 및 열차 일과표</h2>
                 </div>
 
                 <div class="vintage-card gold-accent">
@@ -1233,30 +1466,25 @@
                         <thead>
                             <tr>
                                 <th>노선명</th>
-                                <th>운행 경로 (정차역)</th>
-                                <th>운행 특성</th>
+                                <th>운행 경로</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><strong>제1노선</strong></td>
-                                <td>황혼역 ➔ 만월역 ➔ 죽음역</td>
-                                <td>신화 및 무협 세계 중심의 순환선</td>
+                                <td><strong>황혼역</strong> ➔ 만월역 ➔ <strong>죽음역</strong> ➔ 만월역 ➔ <strong>황혼역</strong></td>
                             </tr>
                             <tr>
                                 <td><strong>제2노선</strong></td>
-                                <td>만월역 ➔ 몽환역 ➔ 죽음역</td>
-                                <td>동양 무협과 판타지 종족 교류선</td>
+                                <td><strong>만월역</strong> ➔ 몽환역 ➔ <strong>죽음역</strong> ➔ 몽환역 ➔ <strong>만월역</strong></td>
                             </tr>
                             <tr>
                                 <td><strong>제3노선</strong></td>
-                                <td>몽환역 ➔ 연무역 ➔ 죽음역</td>
-                                <td>마법 문명과 SF 초문명 교차선</td>
+                                <td><strong>몽환역</strong> ➔ 연무역 ➔ <strong>죽음역</strong> ➔ 연무역 ➔ <strong>몽환역</strong></td>
                             </tr>
                             <tr>
                                 <td><strong>제4노선 (대순환)</strong></td>
-                                <td>황혼 ➔ 만월 ➔ 몽환 ➔ 연무 ➔ 죽음역</td>
-                                <td>전 원류세계를 관통하는 종단 대순환선</td>
+                                <td><strong>황혼역</strong> ➔ 만월역 ➔ 몽환역 ➔ 연무역 ➔ <strong>죽음역</strong> ➔ 연무역 ➔ 몽환역 ➔ 만월역 ➔ <strong>황혼역</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -1264,7 +1492,7 @@
 
                 <div class="grid-2">
                     <div class="vintage-card">
-                        <div class="card-title"><i class="fa-regular fa-clock"></i> 열차 일과 시간표</div>
+                        <div class="card-title"><i class="fa-regular fa-clock"></i> 시간표</div>
                         <ul class="bullet-list">
                             <li><strong>AM 07:00 ~ 09:00 :</strong> 식당칸 조식 서비스</li>
                             <li><strong>AM 11:00 ~ PM 01:00 :</strong> 식당칸 중식 서비스</li>
@@ -1275,10 +1503,15 @@
                     </div>
 
                     <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-clipboard-list"></i> 기관사의 노선 결정권</div>
+                        <div class="card-title"><i class="fa-solid fa-house"></i> 환승역</div>
                         <div class="card-text">
-                            매일 AM 00:00, 관리자로부터 해당 일자 운행 자료가 전송됩니다. 
-                            기관사는 전송된 필요도 자료를 검토하여 기존 노선 사이에 <strong>중간역(0~3개)을 추가하거나 세부 노선을 최종 조정</strong>할 권한을 지닙니다.
+                            한 노선의 운행이 종료된 후 열차가 휴식을 취하기 위해 들리는 역.
+                            기관사 또한 하루 <strong>휴식일</strong>에 들어가며 해당 역의 <strong>엘리베이터</strong>를 통해 원하는 세계로 외출할 수 있습니다. 해당 엘리베이터는 기관사만 사용 가능합니다.
+                        </div>
+                        <br>
+                        <div class="card-text">
+                            휴식일 종료 후 다음날 AM 00:00, 관리자로부터 <strong>운행 자료</strong>가 전송됩니다. 
+                            기관사는 해당 자료를 검토하여 기존 노선 사이에 <strong>중간역(0~3개)을 추가하여 세부 노선을 최종 조정</strong>합니다.
                         </div>
                     </div>
                 </div>
@@ -1288,103 +1521,122 @@
             <div id="c04" class="chapter-panel">
                 <div class="chapter-header">
                     <span class="chapter-header-num">CHAPTER 04</span>
-                    <h2 class="chapter-header-title">열차 내부 시설 안내 (Train Facilities)</h2>
+                    <h2 class="chapter-header-title">열차 내부 시설 안내</h2>
                 </div>
 
                 <div class="grid-2">
-                    <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-gears"></i> 엔진실 (Engine Room)</div>
-                        <div class="card-text">
-                            혼돈에너지를 흡수, 정제, 동력화하는 오르비스호의 핵심부. 보안 구역으로 기관사와 허가된 직원 외에는 출입이 엄격히 제한됩니다.
-                        </div>
-                    </div>
-
-                    <div class="vintage-card">
+                    <div class="vintage-card" style=" margin-bottom: 0;">
                         <div class="card-title"><i class="fa-solid fa-gauge-high"></i> 운전실 (Control Room)</div>
                         <div class="card-text">
-                            노선확인표, 열차 관리 모니터, 승객 통화용 전화기가 갖춰진 공간. 기관사의 개인 룸과 직통으로 연결되어 있습니다.
+                            기관사가 업무를 위해 사용하는 방. <br>
+                            노선확인표, 열차 관리 모니터, 승객 통화용 전화기 등이 갖춰진 공간으로 기관사의 개인 룸과 직통으로 연결되어 있습니다.
                         </div>
                     </div>
 
-                    <div class="vintage-card">
+                    <div class="vintage-card" style=" margin-bottom: 0;">
+                        <div class="card-title"><i class="fa-solid fa-gears"></i> 엔진실 (Engine Room)</div>
+                        <div class="card-text">
+                            혼돈에너지를 흡수, 정제, 동력화하는 장소. <br>
+                            오르비스호의 핵심부로 보안 구역으로 기관사와 직원 외에는 출입이 엄격히 제한됩니다.
+                        </div>
+                    </div>
+
+
+                    <div class="vintage-card" style=" margin-bottom: 0;">
                         <div class="card-title"><i class="fa-solid fa-utensils"></i> 식당칸 (Dining Car)</div>
                         <div class="card-text">
-                            오브젝트 헤드 요리사가 모든 세계의 진미를 요리하는 공간. 정해진 식사 시간에 맞추어 최고급 코스 요리가 제공됩니다.
+                            식사를 할 수 있는 칸. <br>
+                            정해진 식사 시간에 맞춰 식사가 제공되며 직원 요리사가 조리하는 모든 세계의 진미를 맛볼 수 있습니다.
                         </div>
                     </div>
 
-                    <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-bed"></i> 객실칸 - 무한객실</div>
+                    <div class="vintage-card" style=" margin-bottom: 0;">
+                        <div class="card-title"><i class="fa-solid fa-bed"></i> 객실칸 (Passenger Room Car)</div>
                         <div class="card-text">
-                            내부 공간 확장을 통해 <strong>1승객 1객실</strong>이 보장됩니다. 대형 침대, 소파, 욕실, 모니터, 기관사 직통 전화기가 완비된 원룸형 고급 객실입니다.
+                            승객이 머무르는 칸. <br>
+                            대형 침대, 소파, 욕실, 모니터, 기관사 직통 전화기가 완비된 원룸형 고급 객실로 내부 공간 확장을 통해 모두 수용 가능합니다.
                         </div>
                     </div>
 
-                    <div class="vintage-card">
+                    <div class="vintage-card" style=" margin-bottom: 0;">
                         <div class="card-title"><i class="fa-solid fa-wine-glass"></i> 바 칸 (Bar Car)</div>
                         <div class="card-text">
-                            와인잔 오브젝트 헤드 바텐더가 상주하는 고풍스러운 바. 모든 세계의 최고급 주류와 특제 음료가 제조 및 제공됩니다.
+                            술이나 음료를 마실 수 있는 칸. <br>
+                            직원 바텐더가 상주하는 고풍스러운 바로 모든 세계의 최고급 주류와 특제 음료를 맛볼 수 있습니다.
                         </div>
                     </div>
 
-                    <div class="vintage-card">
+                    <div class="vintage-card" style=" margin-bottom: 0;">
                         <div class="card-title"><i class="fa-solid fa-mountain-sun"></i> 전망칸 (Observation Car)</div>
                         <div class="card-text">
-                            혼돈의 유영을 감상할 수 있는 투명벽 라운지. 도서, 카드, 보드게임, 오락기 등 사교 및 휴식을 위한 편의물품이 비치되어 있습니다.
+                            승객들의 휴식 및 사교공간. <br>
+                            혼돈의 유영을 감상할 수 있는 투명벽 라운지로 도서, 카드, 보드게임, 오락기 등 사교 및 휴식을 위한 편의물품이 다수 비치되어 있습니다.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 05. 승무원 -->
+            <!-- 05. 열차직원 -->
             <div id="c05" class="chapter-panel">
                 <div class="chapter-header">
                     <span class="chapter-header-num">CHAPTER 05</span>
-                    <h2 class="chapter-header-title">기관사 및 열차 직원 (Crew & Staff)</h2>
+                    <h2 class="chapter-header-title">기관사 및 열차 직원</h2>
                 </div>
 
                 <div class="vintage-card gold-accent" style="margin-bottom: 25px;">
-                    <div class="card-title"><i class="fa-solid fa-user-tie"></i> 기관사 (The Conductor)</div>
+                    <div class="card-title"><i class="fa-solid fa-user-tie"></i> 기관사</div>
                     <div class="card-text">
-                        <p>열차의 최고 관리자이자 주인. 취임하는 순간 기존 종족에서 탈피하여 불로불사의 <strong>'기관사' 단독 종족</strong>으로 변이합니다.</p>
+                        <p>열차의 최고 관리자이자 주인. <br>외형은 세계에 속한 종족으로 보이지만 취임하는 순간 기존 종족에서 탈피하여 <strong>'기관사' 단독 종족</strong>으로 변이한 사람입니다. </p>
                         <div class="grid-2" style="margin-top: 15px;">
                             <ul class="bullet-list">
-                                <li><strong>특징:</strong> 불로불사, 기억상실(본질만 남음), 모든 언어 구사, 정신/상태이상 면역.</li>
-                                <li><strong>휴식일:</strong> 열차 시간 기준 10일에 1회 (휴식일에만 열차 밖 외출 가능).</li>
+                                <li><strong>특징:</strong> 불로불사, 기억상실, 모든 언어 구사, 정신 및 상태이상 면역.</li>
+                                <li><strong>주업무:</strong> 노선결정, 열차관리, 손님서비스, 티켓확인(객실안내후) 및 긴급티켓판매.</li>
+                                <li><strong>휴식일:</strong> 한 노선운행이 종료된 후 하루 휴식. <strong>이때만 열차 밖 외출 가능.</strong>합니다.</li>
                             </ul>
+
                             <ul class="bullet-list">
-                                <li><strong>권한:</strong> 기관사 명령(시설제어), 하차명령(퇴출), 긴급정차, 비상권한(능력 2배).</li>
-                                <li><strong>은퇴:</strong> 자의로 은퇴 가능, 관리자의 특별 보상으로 원하는 세계의 종으로 편입.</li>
+                                <li><strong>권한:</strong> 퇴거조치(퇴출), 긴급정차(열차노선변경 및 정차), 비상권한(열차능력 2배).</li>
+                                <li><strong>은퇴:</strong> 죽음은 없지만 취임 7일 후부터는 자의적로 은퇴 가능. 관리자의 특별 보상으로 원하는 세계의 종으로 편입이 가능합니다.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <h3 style="color: var(--wine-dark); margin-bottom: 15px; font-family: 'Nanum Myeongjo', serif;">
-                    <i class="fa-solid fa-users-gear"></i> 열차 생성 전용 직원
+                    <i class="fa-solid fa-users-gear"></i> 열차 직원
                 </h3>
 
-                <div class="grid-3">
-                    <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-paw"></i> 승무원 (Service Crew)</div>
-                        <div class="card-text">
-                            동글말랑하고 작은 귀여운 인외 존재들. 다수가 상주하며 객실 서비스, 청소, 보좌를 담당합니다. 긴급 상황 시 경호 전투모드로 전환됩니다.
+                 <div class="vintage-card">
+                     <div class="card-title"><i class="fa-solid fa-paw"></i> 승무원</div>
+		     <div class="card-content">
+                        <div class="card-img">
                         </div>
-                    </div>
+                        <div class="card-text-container card-text">
+                             동글말랑하고 작은 귀여운 인외 존재들. 다수가 상주하며 객실 서비스, 청소, 보좌를 담당합니다. 긴급 상황 시 경호 전투모드로 전환됩니다.
+                        </div>
+                     </div>
+                 </div>
 
-                    <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-fire-burner"></i> 요리사 (Head Chef)</div>
-                        <div class="card-text">
-                            <strong>불꽃 오브젝트 헤드</strong>를 가진 단 1명의 전담 셰프. 식당칸을 전담하며 전 세계 모든 문명의 레시피를 완벽하게 구현합니다.
+                 <div class="vintage-card">
+                     <div class="card-title"><i class="fa-solid fa-fire-burner"></i> 요리사</div>
+		     <div class="card-content">
+                        <div class="card-img">
                         </div>
-                    </div>
+                        <div class="card-text-container card-text">
+                             <strong>불꽃 오브젝트 헤드</strong>를 가진 단 1명의 전담 셰프. 식당칸을 전담하며 전 세계 모든 문명의 레시피를 완벽하게 구현합니다.
+                         </div>
+                      </div>
+                 </div>
 
-                    <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-martini-glass-citrus"></i> 바텐더 (Master Bartender)</div>
-                        <div class="card-text">
-                            <strong>와인잔 오브젝트 헤드</strong>를 가진 1명의 바텐더. 바 칸을 담당하며 손님의 기분과 요청에 맞춘 맞춤형 주류를 제조합니다.
+                 <div class="vintage-card">
+                     <div class="card-title"><i class="fa-solid fa-martini-glass-citrus"></i> 바텐더</div>
+		     <div class="card-content">
+                        <div class="card-img">
                         </div>
-                    </div>
+                        <div class="card-text-container card-text">
+                         <strong>와인잔 오브젝트 헤드</strong>를 가진 1명의 바텐더. 바 칸을 담당하며 손님의 기분과 요청에 맞춘 맞춤형 주류를 제조합니다.
+                         </div>
+                     </div>
                 </div>
             </div>
 
