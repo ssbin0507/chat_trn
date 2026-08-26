@@ -453,22 +453,20 @@
         /* ==========================================================================
            TEAR ANIMATION STAGES
            ========================================================================== */
-        @media (min-width: 901px) {
-            .luxury-ticket:has(.ticket-stub.tearing) .ticket-main,
-            .luxury-ticket:has(.ticket-stub.fade-out) .ticket-main {
-                border-right-color: rgba(223, 183, 108, 0.7);
-            }
-            
-            .luxury-ticket:has(.ticket-stub.tearing) .ticket-stub,
-            .luxury-ticket:has(.ticket-stub.fade-out) .ticket-stub {
-                border-left-color: rgba(223, 183, 108, 0.7);
-            }
-            
-            .luxury-ticket:has(.ticket-stub.tearing) .perforation-line,
-            .luxury-ticket:has(.ticket-stub.fade-out) .perforation-line {
-                opacity: 0;
-                transition: opacity 0s;
-            }
+        .luxury-ticket:has(.ticket-stub.tearing) .ticket-main,
+        .luxury-ticket:has(.ticket-stub.fade-out) .ticket-main {
+            border-right-color: rgba(223, 183, 108, 0.7);
+        }
+        
+        .luxury-ticket:has(.ticket-stub.tearing) .ticket-stub,
+        .luxury-ticket:has(.ticket-stub.fade-out) .ticket-stub {
+            border-left-color: rgba(223, 183, 108, 0.7);
+        }
+        
+        .luxury-ticket:has(.ticket-stub.tearing) .perforation-line,
+        .luxury-ticket:has(.ticket-stub.fade-out) .perforation-line {
+            opacity: 0;
+            transition: opacity 0s;
         }
 
         @keyframes stutterTear {
@@ -1251,7 +1249,7 @@
             font-family: 'Cinzel', serif;
         }
 
-        /* [수정] 팝업창 내부 레이아웃을 세로 방향(사진 상단, 세부내용 하단)으로 변경 */
+        /* 팝업창 내부 레이아웃 */
         .dossier-body {
             display: flex;
             flex-direction: column;
@@ -1259,7 +1257,7 @@
             align-items: center;
         }
 
-        /* [수정] 팝업창 내 프로필 사진 리스트 가로 나열 설정 */
+        /* 팝업창 내 프로필 사진 리스트 */
         .dossier-photo-list {
             display: flex;
             flex-direction: row;
@@ -1283,7 +1281,6 @@
             position: relative;
         }
 
-        /* 개별 사진별 라벨 (예: 남성형 / 여성형 / 본모습 등) */
         .photo-label {
             position: absolute;
             bottom: -8px;
@@ -1366,25 +1363,18 @@
         /* ==========================================================================
            4. RESPONSIVE MOBILE OPTIMIZATION (@media)
            ========================================================================== */
+        /* 모바일 환경 티켓 비율 축소 스케일링 (PC 구성/애니메이션 완전 보존) */
+        @media (max-width: 950px) {
+            .ticket-wrapper {
+                transform: scale(calc(92vw / 900));
+                transform-origin: center center;
+            }
+            .ticket-wrapper:hover {
+                transform: scale(calc(92vw / 900 * 1.02)) translateY(-4px);
+            }
+        }
+
         @media (max-width: 900px) {
-            .luxury-ticket {
-                width: 92vw;
-                height: auto;
-                flex-direction: column;
-            }
-            .perforation-line, .perforation-notch-top, .perforation-notch-bottom {
-                display: none;
-            }
-            .ticket-main {
-                border-right: 3px solid var(--ticket-gold);
-                border-radius: 8px 8px 0 0;
-            }
-            .ticket-stub {
-                width: 100%;
-                border-top: 2px dashed var(--ticket-gold);
-                border-left: 3px solid var(--ticket-gold);
-                border-radius: 0 0 8px 8px;
-            }
             .grid-2, .grid-3 {
                 grid-template-columns: 1fr;
             }
@@ -1400,59 +1390,6 @@
 
             #ticket-screen {
                 padding: 15px 10px;
-            }
-
-            .luxury-ticket {
-                width: 95vw;
-            }
-
-            .ticket-main {
-                padding: 16px 14px;
-            }
-
-            .ticket-main-title {
-                font-size: 2rem;
-            }
-
-            .ticket-brand {
-                font-size: 0.6rem;
-                letter-spacing: 1px;
-            }
-
-            .ticket-class {
-                font-size: 0.6rem;
-                padding: 2px 6px;
-            }
-
-            .ticket-route {
-                padding: 8px 10px;
-            }
-
-            .station-name {
-                font-size: 0.95rem;
-            }
-
-            .route-line {
-                width: 40px;
-            }
-
-            .ticket-seal {
-                width: 42px;
-                height: 42px;
-                font-size: 1rem;
-            }
-
-            .ticket-seal::after {
-                font-size: 0.35rem;
-                bottom: 4px;
-            }
-
-            .ticket-stub {
-                padding: 14px 12px;
-            }
-
-            .ticket-stub-body h3 {
-                font-size: 1.5rem;
             }
 
             .click-hint {
@@ -2411,7 +2348,7 @@
                 
                 const wrapper = document.createElement('div');
                 wrapper.className = 'photo-wrapper';
-                wrapper.innerHTML = photoObj.content; // HTML 문자열 또는 <img> 태그 사용 가능
+                wrapper.innerHTML = photoObj.content;
 
                 photoFrame.appendChild(wrapper);
 
