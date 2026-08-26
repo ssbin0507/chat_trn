@@ -1088,7 +1088,7 @@
 
         /* 승객 기본 팝업창 스타일 */
         .passenger-dossier-modal {
-            width: 620px;
+            width: 680px;
             max-width: 92vw;
             background: var(--bg-paper);
             background-image: 
@@ -1251,22 +1251,51 @@
             font-family: 'Cinzel', serif;
         }
 
+        /* [수정] 팝업창 내부 레이아웃을 세로 방향(사진 상단, 세부내용 하단)으로 변경 */
         .dossier-body {
             display: flex;
-            gap: 25px;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* [수정] 팝업창 내 프로필 사진 리스트 가로 나열 설정 */
+        .dossier-photo-list {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            width: 100%;
         }
 
         .dossier-photo-container {
-            width: 150px;
+            width: 160px;
             height: 190px;
             background: #d8cca8;
-            border: 2px solid var(--brass-dark);
+            border: 0.5px solid var(--brass-dark);
             padding: 5px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            flex-shrink: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+        }
+
+        /* 개별 사진별 라벨 (예: 남성형 / 여성형 / 본모습 등) */
+        .photo-label {
+            position: absolute;
+            bottom: -8px;
+            background: var(--wine-dark);
+            color: var(--brass-light);
+            font-size: 0.65rem;
+            padding: 1px 6px;
+            border-radius: 2px;
+            border: 1px solid var(--brass-gold);
+            font-family: 'Noto Serif KR', serif;
+            z-index: 3;
+            white-space: nowrap;
         }
 
         .dossier-photo-container .photo-wrapper {
@@ -1287,13 +1316,12 @@
         }
 
         .dossier-photo-container i {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: var(--brass-gold);
             opacity: 0.8;
         }
 
         .dossier-info-table {
-            flex: 1;
             width: 100%;
             border-collapse: collapse;
         }
@@ -1546,14 +1574,9 @@
                 font-size: 0.75rem;
             }
 
-            .dossier-body {
-                flex-direction: column;
-                align-items: center;
-            }
-
             .dossier-photo-container {
-                width: 120px;
-                height: 150px;
+                width: 110px;
+                height: 140px;
             }
 
             footer.handbook-footer {
@@ -2021,6 +2044,13 @@
                         <div class="staff-brief-title">Staff</div>
                         <div class="staff-brief-name">바텐더</div>
                     </div>
+
+                    <div class="staff-card" onclick="openStaffModal('기관사')">
+                        <div class="staff-photo-frame">
+                            <i class="fa-solid fa-train"></i>
+                        </div>
+                        <div class="staff-brief-title" style="font-size: 1rem;">해당 인물은 특정 조건에만 나타납니다.</div>
+                    </div>
                 </div>
             </div>
 
@@ -2192,11 +2222,11 @@
                 </div>
             </div>
             <div class="dossier-body">
-                <div class="dossier-photo-container">
-                    <div class="photo-wrapper" id="modal-photo">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
+                <!-- 다중 프로필 사진 리스트가 상단에 위치 -->
+                <div class="dossier-photo-list" id="modal-photo-list">
+                    <!-- JS에 의해 동적으로 사진 프레임이 생성됩니다 -->
                 </div>
+                <!-- 세부내용이 하단에 위치 -->
                 <table class="dossier-info-table">
                     <tr id="row-origin">
                         <th>출신지</th>
@@ -2205,6 +2235,10 @@
                     <tr id="row-species">
                         <th>종족</th>
                         <td id="modal-info-species">-</td>
+                    </tr>
+                    <tr id="row-gender">
+                        <th>성별</th>
+                        <td id="modal-info-gender">-</td>
                     </tr>
                     <tr id="row-nickname">
                         <th id="label-nickname">칭호</th>
@@ -2215,7 +2249,7 @@
                         <td id="modal-info-personality">-</td>
                     </tr>
                     <tr id="row-desc" style="display: none;">
-                        <th>상세설명</th>
+                        <th>전투</th>
                         <td id="modal-info-desc">-</td>
                     </tr>
                 </table>
@@ -2227,69 +2261,92 @@
          JAVASCRIPT
          ========================================================================== -->
     <script>
-        /* 승객 데이터 세트 */
         const passengerData = {
             '아르미스': {
                 name: '아르미스',
-                photo: '<i class="fa-solid fa-wind"></i>',
+                photos: [
+                    { content: '<i class="fa-solid fa-wind"></i>', label: '' }
+                ],
                 origin: 'WN-A0001 (황혼)',
                 species: '신족',
+                gender: '남성', 
                 nickname: '하늘과 여행의 신',
                 personality: 'ENTP+7w8.'
             },
             '메르필리아': {
                 name: '메르필리아',
-                photo: '<i class="fa-solid fa-gem"></i>',
+                photos: [
+                    { content: '<i class="fa-solid fa-gem"></i>', label: '' }
+                ],
                 origin: 'WN-A0001 (황혼)',
                 species: '신족',
+                gender: '여성', 
                 nickname: '사랑과 미의 신',
                 personality: 'ENFJ+2w3.'
             },
             '묵휘': {
                 name: '묵휘',
-                photo: '<i class="fa-solid fa-shield-halved"></i>',
+                photos: [
+                    { content: '<i class="fa-solid fa-shield-halved"></i>', label: '' }
+                ],
                 origin: 'WN-A0019 (만월)',
                 species: '인간',
+                gender: '남성', 
                 nickname: '검성',
                 personality: 'ISTP+9w8.'
             },
             '로샨': {
-                name: '로샨',
-                photo: '<i class="fa-solid fa-dragon"></i>',
+                photos: [
+                    { content: '<i class="fa-solid fa-mars"></i>', label: '남성' },
+                    { content: '<i class="fa-solid fa-venus"></i>', label: '여성' }
+                ],
                 origin: 'WN-A0200 (몽환)',
                 species: '드래곤',
+                gender: '남성/여성 (자유자재로 변경 가능)', 
                 nickname: '황금룡',
                 personality: 'ESTP+8w7.'
             },
             '이오': {
                 name: '이오',
-                photo: '<i class="fa-solid fa-atom"></i>',
+                photos: [
+                    { content: '<i class="fa-solid fa-atom"></i>', label: '' }
+                ],
                 origin: 'WN-A0269 (연무)',
                 species: '기체생명체',
+                gender: '무성', 
                 nickname: '별 포식자',
                 personality: 'ENFP+7w6.'
             },
             'Ω (오메가)': {
                 name: 'Ω (오메가)',
-                photo: '<i class="fa-solid fa-robot"></i>',
+                photos: [
+                    { content: '<i class="fa-solid fa-robot"></i>', label: '' }
+                ],
                 origin: 'WN-A0269 (연무)',
                 species: '안드로이드',
+                gender: '여성', 
                 nickname: '아카식 레코드',
                 personality: 'INTP+5w6.'
             },
             '이현': {
                 name: '이현',
-                photo: '<i class="fa-solid fa-user-secret"></i>',
+                photos: [
+                    { content: '<i class="fa-solid fa-user-secret"></i>', label: '' }
+                ],
                 origin: 'WN-B0007 (죽음)',
                 species: '인간',
+                gender: '남성', 
                 nickname: 'X (괴담관리국 베테랑 요원)',
                 personality: 'ENTP+6w7.'
             },
             '한여름': {
                 name: '한여름',
-                photo: '<i class="fa-solid fa-id-badge"></i>',
+                photos: [
+                    { content: '<i class="fa-solid fa-id-badge"></i>', label: '' }
+                ],
                 origin: 'WN-B0007 (죽음)',
                 species: '인간',
+                gender: '여성', 
                 nickname: 'X (괴담관리국 신입 요원)',
                 personality: 'ISFJ+6w5.'
             }
@@ -2298,30 +2355,76 @@
         /* 열차 직원 데이터 세트 */
         const staffData = {
             '승무원': {
-                name: '승무원 (Crew)',
-                photo: '<i class="fa-solid fa-paw"></i>',
-                position: '객실 서비스 및 경호 승무원',
-                species: '동글말랑한 소형 인외 생명체 (다수)',
-                personality: '친절하고 충성심이 높으며 헌신적임. 비상상황 시 단호하고 호전적인 경호 태세로 전환됨.',
-                desc: '객실 청소, 서빙, 보좌를 담당하며 긴급 상황 발생 시 강력한 전투 모드로 전환됩니다.'
+                name: '승무원',
+                photos: [{ content: '<i class="fa-solid fa-paw"></i>', label: '' }],
+                position: '객실 서비스 및 보조 승무원',
+                species: '직원(인외)',
+                gender: '무성', 
+                personality: 'ESFJ+2w1',
+                desc: '경호수준. 수를 무기로 삼아 분홍색이 된 몸으로 적에게 우르르 달려듭니다.'
             },
             '요리사': {
-                name: '요리사 (Chef)',
-                photo: '<i class="fa-solid fa-fire-burner"></i>',
+                name: '요리사',
+                photos: [{ content: '<i class="fa-solid fa-fire-burner"></i>', label: '' }],
                 position: '식당칸 전담 수석 셰프',
-                species: '불꽃 오브젝트 헤드 (단 1명)',
-                personality: '열정적이고 자부심이 강하며 미식 탐구열이 높음. 손님이 요리를 남기는 것을 매우 싫어함.',
-                desc: '식당칸을 전담하며 전 세계 모든 문명의 미식 및 레시피를 완벽하게 구현하여 제공합니다.'
+                species: '직원(인외)',
+                gender: '무성', 
+                personality: 'ESTJ+1w2',
+                desc: '경호수준. 불꽃이 푸른빛이 되며 불꽃을 생성하고 적에게 투척합니다.'
             },
             '바텐더': {
-                name: '바텐더 (Bartender)',
-                photo: '<i class="fa-solid fa-martini-glass-citrus"></i>',
+                name: '바텐더',
+                photos: [{ content: '<i class="fa-solid fa-martini-glass-citrus"></i>', label: '' }],
                 position: '바 칸 전담 바텐더',
-                species: '와인잔 오브젝트 헤드 (단 1명)',
-                personality: '차분하고 정중하며 뛰어난 경청가. 손님의 마음을 편안하게 만드는 우아한 분위기 조성.',
-                desc: '바 칸을 담당하며 손님의 기분과 요청에 맞춘 맞춤형 시그니처 주류 및 음료를 조주합니다.'
+                species: '직원(인외)',
+                gender: '무성', 
+                personality: 'INFJ+9w1',
+                desc: '경호수준. 액체가 검은색이 되며 뿜어내는 연기가 닿은 곳을 제어 및 속박합니다.'
+            },
+            '기관사': {
+                name: '기관사',
+                photos: [
+                    { content: '<i class="fa-solid fa-mars"></i>', label: '남성' },
+                    { content: '<i class="fa-solid fa-venus"></i>', label: '여성' },
+                    { content: '<i class="fa-solid fa-venus"></i>', label: '무성' }
+                ],
+                position: '바 칸 전담 바텐더',
+                species: '기관사(어느 세계에도 속하지 않는 종)',
+                gender: '여성/남성/무성 (랜덤)', 
+                personality: 'ISFJ+1w2',
+                desc: '기본 호신술 수준. 혼돈체에게 직접 대항해도 문제없는 유일한 전력입니다.'
             }
         };
+
+        /* 사진 요소를 랜더링하는 헬퍼 함수 (최대 3개) */
+        function renderPhotos(photosArray) {
+            const container = document.getElementById('modal-photo-list');
+            container.innerHTML = ''; // 기존 내부 초기화
+
+            if (!photosArray || photosArray.length === 0) return;
+
+            // 최대 3개까지만 출력
+            const items = photosArray.slice(0, 3);
+            items.forEach(photoObj => {
+                const photoFrame = document.createElement('div');
+                photoFrame.className = 'dossier-photo-container';
+                
+                const wrapper = document.createElement('div');
+                wrapper.className = 'photo-wrapper';
+                wrapper.innerHTML = photoObj.content; // HTML 문자열 또는 <img> 태그 사용 가능
+
+                photoFrame.appendChild(wrapper);
+
+                if (photoObj.label) {
+                    const labelSpan = document.createElement('span');
+                    labelSpan.className = 'photo-label';
+                    labelSpan.innerText = photoObj.label;
+                    photoFrame.appendChild(labelSpan);
+                }
+
+                container.appendChild(photoFrame);
+            });
+        }
 
         /* 승객 팝업창 모달 열기 */
         function openPassengerModal(name) {
@@ -2335,6 +2438,7 @@
             document.getElementById('modal-subtitle').innerText = 'PASSENGER REGISTER FILE';
             document.getElementById('modal-info-origin').innerText = data.origin;
             document.getElementById('modal-info-species').innerText = data.species;
+            document.getElementById('modal-info-gender').innerText = data.gender;
             document.getElementById('label-nickname').innerText = '칭호';
             document.getElementById('modal-info-nickname').innerText = data.nickname;
             document.getElementById('modal-info-personality').innerText = data.personality;
@@ -2342,7 +2446,9 @@
             document.getElementById('row-origin').style.display = 'table-row';
             document.getElementById('row-desc').style.display = 'none';
 
-            document.getElementById('modal-photo').innerHTML = data.photo;
+            // 다중 사진 랜더링
+            renderPhotos(data.photos);
+
             document.getElementById('passengerModal').classList.add('active');
         }
 
@@ -2359,13 +2465,16 @@
             document.getElementById('label-nickname').innerText = '직위';
             document.getElementById('modal-info-nickname').innerText = data.position;
             document.getElementById('modal-info-species').innerText = data.species;
+            document.getElementById('modal-info-gender').innerText = data.gender;
             document.getElementById('modal-info-personality').innerText = data.personality;
             document.getElementById('modal-info-desc').innerText = data.desc;
 
             document.getElementById('row-origin').style.display = 'none';
             document.getElementById('row-desc').style.display = 'table-row';
 
-            document.getElementById('modal-photo').innerHTML = data.photo;
+            // 사진 랜더링
+            renderPhotos(data.photos);
+
             document.getElementById('passengerModal').classList.add('active');
         }
 
