@@ -869,7 +869,7 @@
         .train-coach-card {
             background: linear-gradient(180deg, #3b0a11 0%, #21050a 80%, #120305 100%);
             border: 2px solid var(--brass-gold);
-            border-radius: 12px 12px 4px 4px;
+            border-radius: 4px;
             padding: 16px 18px;
             position: relative;
             transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -900,6 +900,9 @@
             padding-bottom: 8px;
             margin-bottom: 12px;
             margin-top: 4px;
+	    text-align: center;
+            justify-content: center;
+            align-items: center;
         }
 
         .coach-title {
@@ -953,42 +956,11 @@
             line-height: 1.65;
             color: #ebdcb8;
             flex: 1;
-            font-family: 'Noto Serif KR', serif;
+	    text-align: center;
         }
 
         .coach-body strong {
             color: var(--brass-light);
-        }
-
-        /* 하부 바퀴 및 볼스터 연결부 (Wheel Coupler) */
-        .coach-chassis {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 14px;
-            padding-top: 6px;
-            border-top: 1px dashed rgba(226, 195, 128, 0.2);
-        }
-
-        .wheel-group {
-            display: flex;
-            gap: 5px;
-        }
-
-        .wheel {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #8c6d32 30%, #1c1311 70%);
-            border: 1.5px solid var(--brass-gold);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .coupler-node {
-            font-family: 'Cinzel', serif;
-            font-size: 0.58rem;
-            color: rgba(226, 195, 128, 0.5);
-            letter-spacing: 1px;
         }
 
         /* ==========================================================================
@@ -1875,7 +1847,7 @@
                 <span class="nav-num">03.</span> 승차안내
             </button>
             <button class="nav-btn" onclick="switchChapter('c04', this)">
-                <span class="nav-num">04.</span> 운행노선 & 시설
+                <span class="nav-num">04.</span> 노선 & 시설
             </button>
             <button class="nav-btn" onclick="switchChapter('c05', this)">
                 <span class="nav-num">05.</span> 직원소개
@@ -1966,7 +1938,11 @@
                 <div class="vintage-card">
                     <div class="card-title"><i class="fa-solid fa-ghost"></i> 혼돈체</div>
                     <div class="card-text">
-                        핵이 변이된 잔재. 세계가 되고 싶은 본능으로 세계를 흡수하려 시도합니다. (E등급 ~ EX등급)
+                        핵이 변이된 잔재. 세계가 되고 싶은 본능으로 세계를 흡수하려 시도합니다. <br>
+                            <ul class="bullet-list">
+                                <li><strong>등급:</strong> C등급 &lt; B등급 &lt; A등급 &lt; EX등급</li>
+                                <li><strong>침투혼돈체:</strong> 간혹 EX급 혼돈체 중 방호벽을 기적적으로 뚫고 침입하는 혼돈체.  언뜻 보면 위험해보이지만 관리자의 규칙을 어겼기에 개입당해 추가 규칙이 강제되고 약화되어 <strong>해당 세계의 괴담, 괴이, 이상현상, 전설 등으로 떠돌다가 점차 약해져 소멸</strong>됩니다.</li>
+                            </ul>
                     </div>
                 </div>
 
@@ -2046,37 +2022,61 @@
 
                 <div class="grid-2">
                     <div class="vintage-card gold-accent">
-                        <div class="card-title"><i class="fa-solid fa-ticket"></i> 매표 및 지불 수단</div>
+                        <div class="card-title"><i class="fa-solid fa-ticket"></i> 티켓</div>
                         <div class="card-text">
-                            정류장 매표소에서 승차권을 구매할 수 있습니다. 
-                            티켓의 가격은 금전이 아닌 <strong>‘구매자 기준 가장 가치 있는 것’</strong>입니다. (개념적/무형적 가치 지불 가능)
+                            정류장 매표소에서 승차권을 구매할 수 있습니다. <br>
+                            티켓의 가격은 <strong>‘구매자 기준 가치 있는 것’</strong>입니다. 이는 돈, 보물 등이 될 수도 있지만 개념적이거나 무형적인 가치 또한 지불이 가능합니다.
                         </div>
                     </div>
 
                     <div class="vintage-card">
-                        <div class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> 무티켓 탑승 시 긴급 조치</div>
+                        <div class="card-title"><i class="fa-solid fa-triangle-exclamation"></i> 무단 탑승 시 긴급 조치</div>
                         <div class="card-text">
-                            미처 티켓을 구매하지 못하고 틈새를 통해 탑승한 승객은 승차 직후 기관사에게 <strong>긴급 티켓 구매</strong>를 진행해야 합니다.
+                            미처 티켓을 구매하지 못하고 탑승한 승객은 승차 직후 기관사에게 <strong>긴급 티켓</strong>을 구매할 수 있습니다.
                         </div>
                     </div>
                 </div>
 
-                <div class="vintage-card" style="margin-top: 10px;">
-                    <div class="card-title"><i class="fa-solid fa-building-columns"></i> 정류장 구조 (Station Facilities)</div>
+                <div class="vintage-card">
+                    <div class="card-title"><i class="fa-solid fa-building-columns"></i> 정류장</div>
                     <div class="card-text">
                         <p>정류장은 각 세계 중심 은하의 틈새에 위치하며, 해당 세계의 시대상과 건축 양식을 반영하고 있습니다.</p>
                         <div class="grid-2" style="margin-top: 10px;">
                             <ul class="bullet-list">
-                                <li><strong>매표소:</strong> 가치 교환식 티켓 발급처</li>
-                                <li><strong>대합실:</strong> 차시간 대기 및 다과 공간</li>
-                            </ul>
-                            <ul class="bullet-list">
-                                <li><strong>승강장:</strong> 차선 진입 및 열차 탑승장</li>
-                                <li><strong>안내시설:</strong> 노선 변경 안내 및 세계 정보 제공</li>
+                                <li><strong>구성:</strong> 매표소, 대합실, 승강장, 안내시설, 자판기</li>
                             </ul>
                         </div>
                     </div>
                 </div>
+
+                    <div class="vintage-card">
+                    <div class="card-title"><i class="fa-solid fa-route"></i> 열차 내 안전 규칙</div>
+                    <div class="card-text">
+                        <p></p>
+                    </div>
+
+                    <table class="vintage-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%"> </th>
+                                <th>안전규칙</th>
+                                <th>경고문구</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>승객끼리 싸움 금지</td>
+				<td rowspan='2'><strong>어기지 않도록 주의 바라며 모두 좋은 승객이 될 수 있도록 예의를 지켜주십시오.</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>통제구역에는 접근 금지</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
 
             </div>
 
@@ -2126,7 +2126,7 @@
                     </div>
 
                     <div class="vintage-card">
-                        <div class="card-title"><i class="fa-regular fa-clock"></i> 시간표</div>
+                        <div class="card-title"><i class="fa-regular fa-clock"></i> 일정표</div>
                         <ul class="bullet-list">
                             <li><strong>AM 07:00 ~ 09:00 :</strong> 식당칸 조식 서비스</li>
                             <li><strong>AM 11:00 ~ PM 01:00 :</strong> 식당칸 중식 서비스</li>
@@ -2139,7 +2139,7 @@
                 </div>
 
                <!-- 개편된 호화열차 객차 구조의 열차 시설 섹션 -->
-               <div class="card-title" style="font-size: 1.4rem; margin-top: 25px;"><i class="fa-solid fa-train-tram"></i> 열차시설</div>
+               <div class="card-title" style="font-size: 1.4rem; margin-top: 25px;"><i class="fa-solid fa-train-tram"></i> 열차 시설</div>
                 
                <div class="train-express-container">
                     <div class="train-rail-line"></div>
@@ -2155,11 +2155,6 @@
                                 기관사가 업무를 위해 사용하는 방. <br>
                                 노선확인표, 열차 관리 모니터, 승객 통화용 전화기 등이 갖춰진 공간으로 <strong>기관사의 개인 룸</strong>과 직통으로 연결되어 있습니다.
                             </div>
-                            <div class="coach-chassis">
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
-                                <span class="coupler-node">CAR-01</span>
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
-                            </div>
 			    <div class="coach-connector"></div>
                         </div>
 
@@ -2170,13 +2165,8 @@
                                 <div class="coach-title"><i class="fa-solid fa-gears"></i> 엔진실 (Engine Room)</div>
                             </div>
                             <div class="coach-body">
-                                혼돈에너지를 흡수, 정제, 동력화하는 장소. <br>
+                                혼돈에너지를 흡수, 정제, 동력화하는 곳. <br>
                                 오르비스호의 핵심부로 보안 구역으로 기관사와 직원 외에는 출입이 엄격히 제한됩니다.
-                            </div>
-                            <div class="coach-chassis">
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
-                                <span class="coupler-node">CAR-02</span>
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
                             </div>
 			    <div class="coach-connector"></div>
                         </div>
@@ -2191,11 +2181,6 @@
                                 식사를 할 수 있는 칸. <br>
                                 정해진 식사 시간에 맞춰 식사가 제공되며 직원 요리사가 조리하는 모든 세계의 진미를 맛볼 수 있습니다.
                             </div>
-                            <div class="coach-chassis">
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
-                                <span class="coupler-node">CAR-03</span>
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
-                            </div>
 			    <div class="coach-connector"></div>
                         </div>
 
@@ -2208,11 +2193,6 @@
                             <div class="coach-body">
                                 승객이 머무르는 칸. <br>
                                 대형 침대, 소파, 욕실, 모니터, 기관사 직통 전화기가 완비된 원룸형 고급 객실로 내부 공간 확장을 통해 모두 수용 가능합니다.
-                            </div>
-                            <div class="coach-chassis">
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
-                                <span class="coupler-node">CAR-04</span>
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
                             </div>
 			    <div class="coach-connector"></div>
                         </div>
@@ -2227,11 +2207,6 @@
                                 술이나 음료를 마실 수 있는 칸. <br>
                                 직원 바텐더가 상주하는 고풍스러운 바로 모든 세계의 최고급 주류와 특제 음료를 맛볼 수 있습니다.
                             </div>
-                            <div class="coach-chassis">
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
-                                <span class="coupler-node">CAR-05</span>
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
-                            </div>
 			    <div class="coach-connector"></div>
                         </div>
 
@@ -2239,16 +2214,11 @@
                         <div class="train-coach-card">
                             <div class="train-coach-roof"></div>
                             <div class="coach-header">
-                                <div class="coach-title"><i class="fa-solid fa-mountain-sun"></i>전망칸 (Observation Car)</div>
+                                <div class="coach-title"><i class="fa-solid fa-mountain-sun"></i> 전망칸 (Observation Car)</div>
                             </div>
                             <div class="coach-body">
                                 승객들의 휴식 및 사교공간. <br>
                                 혼돈의 유영을 감상할 수 있는 투명벽 라운지로 도서, 카드, 보드게임, 오락기 등 사교 및 휴식을 위한 편의물품이 다수 비치되어 있습니다.
-                            </div>
-                            <div class="coach-chassis">
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
-                                <span class="coupler-node">CAR-06</span>
-                                <div class="wheel-group"><div class="wheel"></div><div class="wheel"></div></div>
                             </div>
                         </div>
 
@@ -2269,14 +2239,14 @@
                         <p>열차의 최고 관리자이자 주인. <br>외형은 세계에 속한 종족으로 보이지만 취임하는 순간 기존 종족에서 탈피하여 <strong>'기관사' 단독 종족</strong>으로 변이한 사람입니다. </p>
                         <div class="grid-2" style="margin-top: 15px;">
                             <ul class="bullet-list">
-                                <li><strong>특징:</strong> 불로불사, 기억상실, 모든 언어 구사, 정신 및 상태이상 면역.</li>
-                                <li><strong>주업무:</strong> 노선결정, 열차관리, 손님서비스, 티켓확인(객실안내후) 및 긴급티켓판매.</li>
-                                <li><strong>휴식일:</strong> 한 노선운행이 종료된 후 하루 휴식. <strong>이때만 열차 밖 외출 가능.</strong>합니다. 휴식일 종료 후 다음날 AM 00:00, 기관사는 관리자로부터 전송된 <strong>운행자료</strong>들을 검토하여 기존 노선 사이에 <strong>0~3개 중간역을 추가하여 세부 노선을 최종 조정</strong>합니다.</li>
+                                <li><strong>특징:</strong> 불로불사, 기억상실, 모든 언어·문자 사용 가능, 정신 및 상태이상 면역.</li>
+                                <li><strong>주업무:</strong> 노선 결정, 열차 관리, 손님 서비스, 객실 안내 후 티켓확인 및 긴급 티켓 판매.</li>
+                                <li><strong>휴식일:</strong> 한 노선운행이 종료된 후 하루 휴식합니다.. <strong>이때만 열차 밖 외출 가능.</strong>합니다. 휴식일 종료 후 다음날 AM 00:00, 기관사는 관리자로부터 전송된 <strong>운행자료</strong>들을 검토하여 기존 노선 사이에 <strong>0~3개 중간역을 추가하여 세부 노선을 최종 조정</strong>합니다.</li>
                             </ul>
 
                             <ul class="bullet-list">
                                 <li><strong>권한:</strong> 기관사 명령(시설제어), 하차명령(퇴출), 긴급정차(열차노선변경 및 정차), 비상권한(열차능력 2배).</li>
-                                <li><strong>은퇴:</strong> 죽음은 없지만 취임 7일 후부터는 자의적로 은퇴 가능. 관리자의 특별 보상으로 원하는 세계의 종으로 편입이 가능합니다.</li>
+                                <li><strong>은퇴:</strong> 죽음은 없지만 취임 7일 후부터는 자의적로 은퇴가 가능합니다. 관리자의 특별 보상으로 원하는 세계의 종으로 편입할 수 있습니다.</li>
                             </ul>
                         </div>
                     </div>
