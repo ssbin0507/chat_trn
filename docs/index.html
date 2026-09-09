@@ -1196,6 +1196,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
+	    height: 100dvh;
             background: rgba(10, 2, 4, 0.85);
             backdrop-filter: blur(4px);
             z-index: 10000;
@@ -1205,6 +1206,8 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease;
+	    touch-action: none;
+	    overscroll-behavior: contain;
         }
 
         .modal-overlay.active {
