@@ -51,6 +51,7 @@
             color: var(--text-dark);
             font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
             min-height: 100vh;
+	    min-height: 100dvh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -79,6 +80,9 @@
             align-items: center;
             transition: transform 0.9s cubic-bezier(0.7, 0, 0.2, 1), opacity 0.8s ease;
             box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.95);
+	    touch-action: none;
+	    overscroll-behavior: contain;
+	    overflow: hidden;
         }
 
         .ticket-wrapper {
@@ -1526,13 +1530,12 @@
 
         @media (max-width: 600px) {
             body {
-                padding: 10px 5px;
+                padding: 0;
             }
 
             #ticket-screen {
                 padding: 15px 10px;
-            	transition: opacity 0.3s ease;
-	    	overscroll-behavior: contain;
+		justify-content: center;
             }
 
            /* 모바일 시작 화면 티켓 디자인 최적화 (세로 배치형 최적화) */
