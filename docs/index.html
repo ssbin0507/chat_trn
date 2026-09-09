@@ -1669,8 +1669,12 @@
                 font-size: 0.95rem;
             }
 
-            .passenger-brief-title, .staff-brief-title {
+            .passenger-brief-title {
                 font-size: 0.7rem;
+            }
+
+            .staff-brief-title {
+                font-size: 0.6rem;
             }
 
             /* 모바일 팝업 모달 폰트 조정 */
@@ -1689,6 +1693,12 @@
             .dossier-photo-container {
             	width: 200px;
             	height: 225px;
+            }
+
+            /* [모바일 전용] 이미지가 2개 이상일 때 해당 이미지들만 크기 조절 */
+            .dossier-photo-list:has(.dossier-photo-container:nth-child(2)) .dossier-photo-container {
+                width: 125px;
+                height: 145px;
             }
 
             .photo-label {
