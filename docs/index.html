@@ -1136,6 +1136,17 @@
             text-transform: uppercase;
         }
 
+        .staff-brief-secret {
+            font-family: 'Cinzel', 'Noto Serif KR', serif;
+            font-size: 1rem;
+            color: #d1bd9b;
+            font-weight: 600;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+
         .passenger-photo-frame {
             width: 100px;
             height: 120px;
@@ -1165,14 +1176,14 @@
         }
 
         .passenger-brief-name {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--wine-dark);
             margin-bottom: 4px;
         }
 
         .passenger-brief-title {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--wine-light);
             font-weight: 600;
             margin-bottom: 12px;
@@ -1515,13 +1526,169 @@
                 padding: 15px 10px;
             }
 
+==========================================================================
+               모바일 시작 화면 티켓 디자인 최적화 (세로 배치형 최적화)
+               ========================================================================== */
+            .ticket-wrapper {
+                transform: none !important;
+                width: 92vw;
+                max-width: 360px;
+            }
+
+            .ticket-wrapper:hover {
+                transform: none !important;
+            }
+
+            .luxury-ticket {
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.95), 0 0 25px rgba(223, 183, 108, 0.2);
+            }
+
+            /* 승차권 메인 본체 */
+            .ticket-main {
+                border-right: 3px solid var(--ticket-gold);
+                border-bottom: 2px dashed transparent;
+                border-radius: 8px 8px 0 0;
+                padding: 20px 18px 24px 18px;
+                gap: 12px;
+            }
+
+            /* 좌측 반원 홈 -> 상단 세로 중심 홈으로 위치 조정 */
+            .ticket-main::before {
+                left: 50%;
+                top: -13px;
+                transform: translateX(-50%);
+                border-right: none;
+                border-bottom: 3px solid var(--ticket-gold);
+            }
+
+            .ticket-brand {
+                font-size: 0.62rem;
+                letter-spacing: 1px;
+            }
+
+            .ticket-class {
+                font-size: 0.6rem;
+                padding: 2px 6px;
+            }
+
+            .ticket-main-title {
+                font-size: 2.2rem;
+            }
+
+            .ticket-serial-no {
+                font-size: 0.9rem;
+            }
+
+            .ticket-route {
+                padding: 8px 12px;
+            }
+
+            .station-name {
+                font-size: 0.95rem;
+            }
+
+            .route-line {
+                width: 45px;
+            }
+
+            .ticket-footer {
+                align-items: center;
+            }
+
+            .ticket-seal {
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
+            }
+
+            .ticket-seal::after {
+                font-size: 0.38rem;
+                bottom: 4px;
+            }
+
+            /* 세로형 절취선 및 타공 위치 재배치 */
+            .perforation-notch-top {
+                top: auto;
+                bottom: 120px;
+                left: -13px;
+                right: auto;
+                border-bottom: none;
+                border-right: 3px solid var(--ticket-gold);
+            }
+
+            .perforation-notch-bottom {
+                top: auto;
+                bottom: 120px;
+                right: -13px;
+                left: auto;
+                border-top: none;
+                border-left: 3px solid var(--ticket-gold);
+            }
+
+            .perforation-line {
+                top: auto;
+                bottom: 131px;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 0;
+                border-right: none;
+                border-bottom: 2px dashed rgba(223, 183, 108, 0.7);
+            }
+
+            /* 우측 승차권 스텁 -> 하단 스텁으로 전환 */
+            .ticket-stub {
+                width: 100%;
+                height: 132px;
+                padding: 12px 15px;
+                border-left: 3px solid var(--ticket-gold);
+                border-top: 2px dashed transparent;
+                border-radius: 0 0 8px 8px;
+                transform-origin: center top;
+            }
+
+            /* 우측 반원 홈 -> 하단 세로 중심 홈으로 위치 조정 */
+            .ticket-stub::after {
+                right: auto;
+                left: 50%;
+                top: auto;
+                bottom: -13px;
+                transform: translateX(-50%);
+                border-left: none;
+                border-top: 3px solid var(--ticket-gold);
+            }
+
+            .ticket-stub-body h3 {
+                font-size: 1.3rem;
+            }
+
+            .ticket-stub-body p {
+                font-size: 0.7rem;
+            }
+
+            /* 모바일 뜯어짐 애니메이션 최적화 */
+            .ticket-stub.tearing {
+                animation: stutterTearMobile 0.65s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+            }
+
+            .ticket-stub.fade-out {
+                opacity: 0;
+                transform: translate(0, 90px) rotate(10deg) scale(0.92);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+                pointer-events: none;
+            }
+
             .click-hint {
                 font-size: 0.75rem;
                 letter-spacing: 1.5px;
-                margin-top: 18px;
+                margin-top: 24px;
                 text-align: center;
             }
 
+            /* 본문 핸드북 모바일 스타일 유지 */
             #handbook-container {
                 max-width: 100vw;
                 min-height: auto;
@@ -1669,12 +1836,8 @@
                 font-size: 0.95rem;
             }
 
-            .passenger-brief-title {
+            .passenger-brief-title, .staff-brief-title, .staff-brief-secret {
                 font-size: 0.7rem;
-            }
-
-            .staff-brief-title {
-                font-size: 0.6rem;
             }
 
             /* 모바일 팝업 모달 폰트 조정 */
@@ -2277,7 +2440,7 @@
                         <div class="staff-photo-frame">
                             <i class="fa-solid fa-train"></i>
                         </div>
-                        <div class="staff-brief-title" style="font-size: 1rem;">해당 인물은 특정 조건에만 나타납니다.</div>
+                        <div class="staff-brief-secret">해당 인물은 특정 조건에만 나타납니다.</div>
                     </div>
                 </div>
             </div>
