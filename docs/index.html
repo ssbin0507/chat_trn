@@ -1529,17 +1529,14 @@
                 padding: 15px 10px;
             }
 
-==========================================================================
-               모바일 시작 화면 티켓 디자인 최적화 (세로 배치형 최적화)
-               ========================================================================== */
+           /* 모바일 시작 화면 티켓 디자인 최적화 (세로 배치형 최적화) */
             .ticket-wrapper {
-                transform: none !important;
-                width: 92vw;
-                max-width: 360px;
+                transform: scale(calc(88vw / 900px)) !important;
+                transform-origin: center center;
             }
 
             .ticket-wrapper:hover {
-                transform: none !important;
+                transform: scale(calc((88vw / 900px) * 1.02)) !important;
             }
 
             .luxury-ticket {
